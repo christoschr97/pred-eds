@@ -1,0 +1,54 @@
+{
+  "experiment": "Exp1 \u2014 Tuned Logistic Regression Baseline",
+  "description": "LogisticRegression with GridSearchCV (TimeSeriesSplit n=5). Flattened 6-month window input. class_weight={0:1.0, 1:1.683}. Same temporal split as paper (train\u22642022-12, test\u22652023-01).",
+  "param_grid": {
+    "C": [
+      0.001,
+      0.01,
+      0.1,
+      1,
+      10,
+      100
+    ],
+    "penalty": [
+      "l1",
+      "l2"
+    ],
+    "solver": [
+      "liblinear",
+      "saga"
+    ]
+  },
+  "results": [
+    {
+      "feature_set": "Full Model (16 feat, 96-dim flattened)",
+      "best_params": {
+        "C": 0.1,
+        "penalty": "l1",
+        "solver": "saga"
+      },
+      "cv_auprc": 0.6741,
+      "train_auprc": 0.6889,
+      "test_auprc": 0.7383,
+      "test_auroc": 0.7669,
+      "test_brier": 0.2065,
+      "gap": 0.0494,
+      "tuning_seconds": 18.9
+    },
+    {
+      "feature_set": "Events Only (4 feat, 24-dim flattened)",
+      "best_params": {
+        "C": 0.01,
+        "penalty": "l2",
+        "solver": "saga"
+      },
+      "cv_auprc": 0.6826,
+      "train_auprc": 0.6828,
+      "test_auprc": 0.7426,
+      "test_auroc": 0.7686,
+      "test_brier": 0.2062,
+      "gap": 0.0598,
+      "tuning_seconds": 1.0
+    }
+  ]
+}

@@ -1,0 +1,840 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{55}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\bibcommenthead
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem[\protect\citeauthoryear{Christia}{2012}]{christia2012social}
+\begin{bbook}
+\bauthor{\bsnm{Christia}, \binits{F.}}:
+\bbtitle{Alliance Formation in Civil Wars}.
+\bpublisher{Cambridge University Press},
+\blocation{Cambridge}
+(\byear{2012})
+\end{bbook}
+\endbibitem
+
+%%% 2
+\bibitem[\protect\citeauthoryear{Staniland}{2014}]{staniland2014networks}
+\begin{bbook}
+\bauthor{\bsnm{Staniland}, \binits{P.}}:
+\bbtitle{Networks of Rebellion: Explaining Insurgent Cohesion and Collapse}.
+\bpublisher{Cornell University Press},
+\blocation{Ithaca, NY}
+(\byear{2014})
+\end{bbook}
+\endbibitem
+
+%%% 3
+\bibitem[\protect\citeauthoryear{Tilly}{1985}]{tilly1985war}
+\begin{bchapter}
+\bauthor{\bsnm{Tilly}, \binits{C.}}:
+\bctitle{War making and state making as organized crime}.
+In: \beditor{\bsnm{Evans}, \binits{P.B.}},
+\beditor{\bsnm{Rueschemeyer}, \binits{D.}},
+\beditor{\bsnm{Skocpol}, \binits{T.}} (eds.)
+\bbtitle{Bringing the State Back In},
+pp. \bfpage{169}--\blpage{191}.
+\bpublisher{Cambridge University Press},
+\blocation{Cambridge}
+(\byear{1985})
+\end{bchapter}
+\endbibitem
+
+%%% 4
+\bibitem[\protect\citeauthoryear{Davenport}{2007}]{davenport2007state}
+\begin{bbook}
+\bauthor{\bsnm{Davenport}, \binits{C.}}:
+\bbtitle{State Repression and the Domestic Democratic Peace}.
+\bpublisher{Cambridge University Press},
+\blocation{Cambridge}
+(\byear{2007})
+\end{bbook}
+\endbibitem
+
+%%% 5
+\bibitem[\protect\citeauthoryear{Mann}{2005}]{mann2005dark}
+\begin{bbook}
+\bauthor{\bsnm{Mann}, \binits{M.}}:
+\bbtitle{The Dark Side of Democracy: Explaining Ethnic Cleansing}.
+\bpublisher{Cambridge University Press},
+\blocation{Cambridge}
+(\byear{2005})
+\end{bbook}
+\endbibitem
+
+%%% 6
+\bibitem[\protect\citeauthoryear{Salganik et~al.}{2020}]{salganik2020measuring}
+\begin{barticle}
+\bauthor{\bsnm{Salganik}, \binits{M.J.}},
+\bauthor{\bsnm{Lundberg}, \binits{I.}},
+\bauthor{\bsnm{Kindel}, \binits{A.T.}},
+\bauthor{\bsnm{Ahearn}, \binits{C.E.}},
+\bauthor{\bsnm{Al-Ghoneim}, \binits{K.}},
+\bauthor{\bsnm{Almaatouq}, \binits{A.}},
+\bauthor{\bsnm{Altschul}, \binits{D.M.}},
+\bauthor{\bsnm{Brand}, \binits{J.E.}},
+\bauthor{\bsnm{Carnegie}, \binits{N.B.}},
+\bauthor{\bsnm{Compton}, \binits{R.J.}}, \betal:
+\batitle{Measuring the predictability of life outcomes with a scientific mass
+  collaboration}.
+\bjtitle{Proceedings of the National Academy of Sciences}
+\bvolume{117}(\bissue{15}),
+\bfpage{8398}--\blpage{8403}
+(\byear{2020})
+\end{barticle}
+\endbibitem
+
+%%% 7
+\bibitem[\protect\citeauthoryear{Hofman et~al.}{2021}]{hofman2021integrating}
+\begin{barticle}
+\bauthor{\bsnm{Hofman}, \binits{J.M.}},
+\bauthor{\bsnm{Watts}, \binits{D.J.}},
+\bauthor{\bsnm{Athey}, \binits{S.}},
+\bauthor{\bsnm{Garip}, \binits{F.}},
+\bauthor{\bsnm{Griffiths}, \binits{T.L.}},
+\bauthor{\bsnm{Kleinberg}, \binits{J.}},
+\bauthor{\bsnm{Margetts}, \binits{H.}},
+\bauthor{\bsnm{Mullainathan}, \binits{S.}},
+\bauthor{\bsnm{Salganik}, \binits{M.J.}},
+\bauthor{\bsnm{Vazire}, \binits{S.}}, \betal:
+\batitle{Integrating explanation and prediction in computational social
+  science}.
+\bjtitle{Nature}
+\bvolume{595}(\bissue{7866}),
+\bfpage{181}--\blpage{188}
+(\byear{2021})
+\end{barticle}
+\endbibitem
+
+%%% 8
+\bibitem[\protect\citeauthoryear{{United Nations General
+  Assembly}}{2006}]{icpped2006}
+\begin{botherref}
+\oauthor{\bsnm{{United Nations General Assembly}}}:
+International Convention for the Protection of All Persons from Enforced
+  Disappearance.
+UN Doc. A/RES/61/177.
+Adopted 20 December 2006, entered into force 23 December 2010
+(2006).
+\url{https://www.ohchr.org/en/instruments-mechanisms/instruments/international-convention-protection-all-persons-enforced}
+\end{botherref}
+\endbibitem
+
+%%% 9
+\bibitem[\protect\citeauthoryear{{United Nations General
+  Assembly}}{1992}]{unga1992disappearance}
+\begin{botherref}
+\oauthor{\bsnm{{United Nations General Assembly}}}:
+Declaration on the Protection of All Persons from Enforced Disappearance.
+Resolution 47/133, adopted 18 December 1992
+(1992).
+\url{https://www.ohchr.org/en/instruments-mechanisms/instruments/declaration-protection-all-persons-enforced-disappearance}
+\end{botherref}
+\endbibitem
+
+%%% 10
+\bibitem[\protect\citeauthoryear{Hegre et~al.}{2019}]{hegre2019views}
+\begin{barticle}
+\bauthor{\bsnm{Hegre}, \binits{H.}},
+\bauthor{\bsnm{Allansson}, \binits{M.}},
+\bauthor{\bsnm{Basedau}, \binits{M.}},
+\bauthor{\bsnm{Colaresi}, \binits{M.}},
+\bauthor{\bsnm{Croicu}, \binits{M.}},
+\bauthor{\bsnm{Fjelde}, \binits{H.}},
+\bauthor{\bsnm{Hoyles}, \binits{F.}},
+\bauthor{\bsnm{Hultman}, \binits{L.}},
+\bauthor{\bsnm{H{\"o}gbladh}, \binits{S.}},
+\bauthor{\bsnm{Jansen}, \binits{R.}}, \betal:
+\batitle{Views: A political violence early-warning system}.
+\bjtitle{Journal of peace research}
+\bvolume{56}(\bissue{2}),
+\bfpage{155}--\blpage{174}
+(\byear{2019})
+\end{barticle}
+\endbibitem
+
+%%% 11
+\bibitem[\protect\citeauthoryear{Hegre et~al.}{2021}]{hegre2021views}
+\begin{barticle}
+\bauthor{\bsnm{Hegre}, \binits{H.}},
+\bauthor{\bsnm{Bell}, \binits{C.}},
+\bauthor{\bsnm{Colaresi}, \binits{M.}},
+\bauthor{\bsnm{Croicu}, \binits{M.}},
+\bauthor{\bsnm{Hoyles}, \binits{F.}},
+\bauthor{\bsnm{Jansen}, \binits{R.}},
+\bauthor{\bsnm{Leis}, \binits{M.R.}},
+\bauthor{\bsnm{Lindqvist-McGowan}, \binits{A.}},
+\bauthor{\bsnm{Randahl}, \binits{D.}},
+\bauthor{\bsnm{R{\o}d}, \binits{E.G.}}, \betal:
+\batitle{Views2020: revising and evaluating the views political violence
+  early-warning system}.
+\bjtitle{Journal of peace research}
+\bvolume{58}(\bissue{3}),
+\bfpage{599}--\blpage{611}
+(\byear{2021})
+\end{barticle}
+\endbibitem
+
+%%% 12
+\bibitem[\protect\citeauthoryear{Hegre et~al.}{2025}]{hegre2024views}
+\begin{barticle}
+\bauthor{\bsnm{Hegre}, \binits{H.}},
+\bauthor{\bsnm{Vesco}, \binits{P.}},
+\bauthor{\bsnm{Colaresi}, \binits{M.}},
+\bauthor{\bsnm{Vestby}, \binits{J.}},
+\bauthor{\bsnm{Timlick}, \binits{A.}},
+\bauthor{\bsnm{Kazmi}, \binits{N.S.}},
+\bauthor{\bsnm{Lindqvist-McGowan}, \binits{A.}},
+\bauthor{\bsnm{Becker}, \binits{F.}},
+\bauthor{\bsnm{Binetti}, \binits{M.}},
+\bauthor{\bsnm{Bodentien}, \binits{T.}}, \betal:
+\batitle{The 2023/24 views prediction challenge: Predicting the number of
+  fatalities in armed conflict, with uncertainty}.
+\bjtitle{Journal of Peace Research}
+\bvolume{62}(\bissue{6}),
+\bfpage{2070}--\blpage{2087}
+(\byear{2025})
+\end{barticle}
+\endbibitem
+
+%%% 13
+\bibitem[\protect\citeauthoryear{O'brien}{2010}]{obrien2010crisis}
+\begin{barticle}
+\bauthor{\bsnm{O'brien}, \binits{S.P.}}:
+\batitle{Crisis early warning and decision support: Contemporary approaches and
+  thoughts on future research}.
+\bjtitle{International studies review}
+\bvolume{12}(\bissue{1}),
+\bfpage{87}--\blpage{104}
+(\byear{2010})
+\end{barticle}
+\endbibitem
+
+%%% 14
+\bibitem[\protect\citeauthoryear{Goldstone et~al.}{2010}]{goldstone2010global}
+\begin{barticle}
+\bauthor{\bsnm{Goldstone}, \binits{J.A.}},
+\bauthor{\bsnm{Bates}, \binits{R.H.}},
+\bauthor{\bsnm{Epstein}, \binits{D.L.}},
+\bauthor{\bsnm{Gurr}, \binits{T.R.}},
+\bauthor{\bsnm{Lustik}, \binits{M.B.}},
+\bauthor{\bsnm{Marshall}, \binits{M.G.}},
+\bauthor{\bsnm{Ulfelder}, \binits{J.}},
+\bauthor{\bsnm{Woodward}, \binits{M.}}:
+\batitle{A global model for forecasting political instability}.
+\bjtitle{American journal of political science}
+\bvolume{54}(\bissue{1}),
+\bfpage{190}--\blpage{208}
+(\byear{2010})
+\end{barticle}
+\endbibitem
+
+%%% 15
+\bibitem[\protect\citeauthoryear{Ward et~al.}{2010}]{ward2010perils}
+\begin{barticle}
+\bauthor{\bsnm{Ward}, \binits{M.D.}},
+\bauthor{\bsnm{Greenhill}, \binits{B.D.}},
+\bauthor{\bsnm{Bakke}, \binits{K.M.}}:
+\batitle{The perils of policy by p-value: Predicting civil conflicts}.
+\bjtitle{Journal of peace research}
+\bvolume{47}(\bissue{4}),
+\bfpage{363}--\blpage{375}
+(\byear{2010})
+\end{barticle}
+\endbibitem
+
+%%% 16
+\bibitem[\protect\citeauthoryear{Blair and
+  Sambanis}{2020}]{blair2020forecasting}
+\begin{barticle}
+\bauthor{\bsnm{Blair}, \binits{R.A.}},
+\bauthor{\bsnm{Sambanis}, \binits{N.}}:
+\batitle{Forecasting civil wars: Theory and structure in an age of “big
+  data” and machine learning}.
+\bjtitle{Journal of conflict resolution}
+\bvolume{64}(\bissue{10}),
+\bfpage{1885}--\blpage{1915}
+(\byear{2020})
+\end{barticle}
+\endbibitem
+
+%%% 17
+\bibitem[\protect\citeauthoryear{Chadefaux and
+  Schincariol}{2025}]{chadefaux2025endogenous}
+\begin{barticle}
+\bauthor{\bsnm{Chadefaux}, \binits{T.}},
+\bauthor{\bsnm{Schincariol}, \binits{T.}}:
+\batitle{Endogenous conflict and the limits of predictive optimization}.
+\bjtitle{EPJ Data Science}
+\bvolume{14}(\bissue{1}),
+\bfpage{82}
+(\byear{2025})
+\end{barticle}
+\endbibitem
+
+%%% 18
+\bibitem[\protect\citeauthoryear{Radford}{2022}]{radford2022high}
+\begin{barticle}
+\bauthor{\bsnm{Radford}, \binits{B.J.}}:
+\batitle{High resolution conflict forecasting with spatial convolutions and
+  long short-term memory}.
+\bjtitle{International Interactions}
+\bvolume{48}(\bissue{4}),
+\bfpage{739}--\blpage{758}
+(\byear{2022})
+\end{barticle}
+\endbibitem
+
+%%% 19
+\bibitem[\protect\citeauthoryear{Malone}{2022}]{malone2022recurrent}
+\begin{barticle}
+\bauthor{\bsnm{Malone}, \binits{I.}}:
+\batitle{Recurrent neural networks for conflict forecasting}.
+\bjtitle{International Interactions}
+\bvolume{48}(\bissue{4}),
+\bfpage{614}--\blpage{632}
+(\byear{2022})
+\end{barticle}
+\endbibitem
+
+%%% 20
+\bibitem[\protect\citeauthoryear{{Amnesty
+  International}}{2024}]{amnesty2024disappearances}
+\begin{botherref}
+\oauthor{\bsnm{{Amnesty International}}}:
+Enforced Disappearances
+(2024).
+\url{https://www.amnesty.org/en/what-we-do/enforced-disappearances/}
+\end{botherref}
+\endbibitem
+
+%%% 21
+\bibitem[\protect\citeauthoryear{{UN Working Group on Enforced or Involuntary
+  Disappearances}}{2023}]{unwged2023}
+\begin{botherref}
+\oauthor{\bsnm{{UN Working Group on Enforced or Involuntary Disappearances}}}:
+Report of the Working Group on Enforced or Involuntary Disappearances.
+UN Doc. A/HRC/54/43
+(2023).
+\url{https://digitallibrary.un.org/record/4086885}
+\end{botherref}
+\endbibitem
+
+%%% 22
+\bibitem[\protect\citeauthoryear{{University of Minnesota Human Rights
+  Program}}{2024}]{umnmexico2024}
+\begin{botherref}
+\oauthor{\bsnm{{University of Minnesota Human Rights Program}}}:
+Disappearances in {Mexico}
+(2024).
+\url{https://cla.umn.edu/human-rights/engagement/press-reporting-disappearances-mexico}
+\end{botherref}
+\endbibitem
+
+%%% 23
+\bibitem[\protect\citeauthoryear{{Human Rights Watch}}{2021}]{hrwmyanmar2021}
+\begin{botherref}
+\oauthor{\bsnm{{Human Rights Watch}}}:
+Myanmar: Hundreds Forcibly Disappeared
+(2021).
+\url{https://www.hrw.org/news/2021/04/02/myanmar-hundreds-forcibly-disappeared}
+\end{botherref}
+\endbibitem
+
+%%% 24
+\bibitem[\protect\citeauthoryear{{TRIAL International}}{2024}]{trialintl2024}
+\begin{botherref}
+\oauthor{\bsnm{{TRIAL International}}}:
+Enforced Disappearance
+(2024).
+\url{https://trialinternational.org/topics-post/enforced-disappearance/}
+\end{botherref}
+\endbibitem
+
+%%% 25
+\bibitem[\protect\citeauthoryear{Reyes et~al.}{2024}]{reyes2024harmonizing}
+\begin{barticle}
+\bauthor{\bsnm{Reyes}, \binits{J.}},
+\bauthor{\bsnm{Farbstein}, \binits{S.H.}},
+\bauthor{\bsnm{Ochoa}, \binits{S.}},
+\bauthor{\bsnm{Gore}, \binits{R.}},
+\bauthor{\bsnm{Bones}, \binits{A.}},
+\bauthor{\bsnm{Khaitan}, \binits{N.}},
+\bauthor{\bsnm{Abut}, \binits{V.}}:
+\batitle{Harmonizing legal approaches to enforced disappearances: evidentiary
+  challenges, emerging developments, and the role of non-state actors}.
+\bjtitle{Harv. Hum. Rts. J.}
+\bvolume{37},
+\bfpage{169}
+(\byear{2024})
+\end{barticle}
+\endbibitem
+
+%%% 26
+\bibitem[\protect\citeauthoryear{{Human Rights Data Analysis
+  Group}}{2024}]{hrdag2024datasets}
+\begin{botherref}
+\oauthor{\bsnm{{Human Rights Data Analysis Group}}}:
+Datasets Available for Research
+(2024).
+\url{https://hrdag.org/data-publication/}
+\end{botherref}
+\endbibitem
+
+%%% 27
+\bibitem[\protect\citeauthoryear{Mueller and Rauh}{2018}]{mueller2018reading}
+\begin{barticle}
+\bauthor{\bsnm{Mueller}, \binits{H.}},
+\bauthor{\bsnm{Rauh}, \binits{C.}}:
+\batitle{Reading between the lines: Prediction of political violence using
+  newspaper text}.
+\bjtitle{American Political Science Review}
+\bvolume{112}(\bissue{2}),
+\bfpage{358}--\blpage{375}
+(\byear{2018})
+\end{barticle}
+\endbibitem
+
+%%% 28
+\bibitem[\protect\citeauthoryear{Gelvez}{2025}]{gelvez2025predicting}
+\begin{barticle}
+\bauthor{\bsnm{Gelvez}, \binits{J.D.}}:
+\batitle{Predicting police and military violence: evidence from colombia and
+  mexico using machine learning models}.
+\bjtitle{Humanities and Social Sciences Communications}
+\bvolume{12}(\bissue{1}),
+\bfpage{1}--\blpage{13}
+(\byear{2025})
+\end{barticle}
+\endbibitem
+
+%%% 29
+\bibitem[\protect\citeauthoryear{King and Zeng}{2001a}]{king2001logistic}
+\begin{barticle}
+\bauthor{\bsnm{King}, \binits{G.}},
+\bauthor{\bsnm{Zeng}, \binits{L.}}:
+\batitle{Logistic regression in rare events data}.
+\bjtitle{Political Analysis}
+\bvolume{9}(\bissue{2}),
+\bfpage{137}--\blpage{163}
+(\byear{2001})
+\doiurl{10.1093/oxfordjournals.pan.a004868}
+\end{barticle}
+\endbibitem
+
+%%% 30
+\bibitem[\protect\citeauthoryear{King and Zeng}{2001b}]{king2001explaining}
+\begin{barticle}
+\bauthor{\bsnm{King}, \binits{G.}},
+\bauthor{\bsnm{Zeng}, \binits{L.}}:
+\batitle{Explaining rare events in international relations}.
+\bjtitle{International Organization}
+\bvolume{55}(\bissue{3}),
+\bfpage{693}--\blpage{715}
+(\byear{2001})
+\end{barticle}
+\endbibitem
+
+%%% 31
+\bibitem[\protect\citeauthoryear{Muchlinski
+  et~al.}{2016}]{muchlinski2016comparing}
+\begin{barticle}
+\bauthor{\bsnm{Muchlinski}, \binits{D.}},
+\bauthor{\bsnm{Siroky}, \binits{D.}},
+\bauthor{\bsnm{He}, \binits{J.}},
+\bauthor{\bsnm{Kocher}, \binits{M.}}:
+\batitle{Comparing random forest with logistic regression for predicting
+  class-imbalanced civil war onset data}.
+\bjtitle{Political Analysis}
+\bvolume{24}(\bissue{1}),
+\bfpage{87}--\blpage{103}
+(\byear{2016})
+\end{barticle}
+\endbibitem
+
+%%% 32
+\bibitem[\protect\citeauthoryear{He and Garcia}{2009}]{he2009learning}
+\begin{barticle}
+\bauthor{\bsnm{He}, \binits{H.}},
+\bauthor{\bsnm{Garcia}, \binits{E.A.}}:
+\batitle{Learning from imbalanced data}.
+\bjtitle{IEEE Transactions on Knowledge and Data Engineering}
+\bvolume{21}(\bissue{9}),
+\bfpage{1263}--\blpage{1284}
+(\byear{2009})
+\end{barticle}
+\endbibitem
+
+%%% 33
+\bibitem[\protect\citeauthoryear{Saito and
+  Rehmsmeier}{2015}]{saito2015precision}
+\begin{barticle}
+\bauthor{\bsnm{Saito}, \binits{T.}},
+\bauthor{\bsnm{Rehmsmeier}, \binits{M.}}:
+\batitle{The precision-recall plot is more informative than the roc plot when
+  evaluating binary classifiers on imbalanced datasets}.
+\bjtitle{PloS one}
+\bvolume{10}(\bissue{3}),
+\bfpage{0118432}
+(\byear{2015})
+\end{barticle}
+\endbibitem
+
+%%% 34
+\bibitem[\protect\citeauthoryear{Hegre et~al.}{2017a}]{hegre2017conflict}
+\begin{botherref}
+\oauthor{\bsnm{Hegre}, \binits{H.}},
+\oauthor{\bsnm{Metternich}, \binits{N.W.}},
+\oauthor{\bsnm{Nyg{\aa}rd}, \binits{H.M.}},
+\oauthor{\bsnm{Wucherpfennig}, \binits{J.}}:
+Introduction: Forecasting in peace research.
+Sage Publications Sage UK: London, England
+(2017)
+\end{botherref}
+\endbibitem
+
+%%% 35
+\bibitem[\protect\citeauthoryear{Hegre et~al.}{2017b}]{hegre2017evaluating}
+\begin{barticle}
+\bauthor{\bsnm{Hegre}, \binits{H.}},
+\bauthor{\bsnm{Nyg{\aa}rd}, \binits{H.M.}},
+\bauthor{\bsnm{R{\ae}der}, \binits{R.F.}}:
+\batitle{Evaluating the scope and intensity of the conflict trap: A dynamic
+  simulation approach}.
+\bjtitle{Journal of Peace Research}
+\bvolume{54}(\bissue{2}),
+\bfpage{243}--\blpage{261}
+(\byear{2017})
+\end{barticle}
+\endbibitem
+
+%%% 36
+\bibitem[\protect\citeauthoryear{Mueller and Rauh}{2022}]{mueller2022hard}
+\begin{barticle}
+\bauthor{\bsnm{Mueller}, \binits{H.}},
+\bauthor{\bsnm{Rauh}, \binits{C.}}:
+\batitle{The hard problem of prediction for conflict prevention}.
+\bjtitle{Journal of the European Economic Association}
+\bvolume{20}(\bissue{6}),
+\bfpage{2440}--\blpage{2467}
+(\byear{2022})
+\end{barticle}
+\endbibitem
+
+%%% 37
+\bibitem[\protect\citeauthoryear{Beck et~al.}{2000}]{beck2000improving}
+\begin{barticle}
+\bauthor{\bsnm{Beck}, \binits{N.}},
+\bauthor{\bsnm{King}, \binits{G.}},
+\bauthor{\bsnm{Zeng}, \binits{L.}}:
+\batitle{Improving quantitative studies of international conflict: A
+  conjecture}.
+\bjtitle{American Political science review}
+\bvolume{94}(\bissue{1}),
+\bfpage{21}--\blpage{35}
+(\byear{2000})
+\end{barticle}
+\endbibitem
+
+%%% 38
+\bibitem[\protect\citeauthoryear{von~der Maase}{2025}]{vondermaase2025hydranet}
+\begin{botherref}
+\oauthor{\bsnm{Maase}, \binits{S.P.}}:
+Next-generation conflict forecasting: Unleashing predictive patterns through
+  spatiotemporal learning.
+arXiv preprint arXiv:2506.14817
+(2025)
+\end{botherref}
+\endbibitem
+
+%%% 39
+\bibitem[\protect\citeauthoryear{Brandt et~al.}{2022}]{brandt2022stgcn}
+\begin{barticle}
+\bauthor{\bsnm{Brandt}, \binits{P.T.}},
+\bauthor{\bsnm{D’Orazio}, \binits{V.}},
+\bauthor{\bsnm{Khan}, \binits{L.}},
+\bauthor{\bsnm{Li}, \binits{Y.-F.}},
+\bauthor{\bsnm{Osorio}, \binits{J.}},
+\bauthor{\bsnm{Sianan}, \binits{M.}}:
+\batitle{Conflict forecasting with event data and spatio-temporal graph
+  convolutional networks}.
+\bjtitle{International Interactions}
+\bvolume{48}(\bissue{4}),
+\bfpage{800}--\blpage{822}
+(\byear{2022})
+\end{barticle}
+\endbibitem
+
+%%% 40
+\bibitem[\protect\citeauthoryear{Malhotra et~al.}{2015}]{malhotra2015long}
+\begin{bchapter}
+\bauthor{\bsnm{Malhotra}, \binits{P.}},
+\bauthor{\bsnm{Vig}, \binits{L.}},
+\bauthor{\bsnm{Shroff}, \binits{G.}},
+\bauthor{\bsnm{Agarwal}, \binits{P.}}, \betal:
+\bctitle{Long short term memory networks for anomaly detection in time series}.
+In: \bbtitle{Proceedings},
+vol. \bseriesno{89},
+p. \bfpage{94}
+(\byear{2015})
+\end{bchapter}
+\endbibitem
+
+%%% 41
+\bibitem[\protect\citeauthoryear{Vesco et~al.}{2022}]{vesco2022united}
+\begin{barticle}
+\bauthor{\bsnm{Vesco}, \binits{P.}},
+\bauthor{\bsnm{Hegre}, \binits{H.}},
+\bauthor{\bsnm{Colaresi}, \binits{M.}},
+\bauthor{\bsnm{Jansen}, \binits{R.B.}},
+\bauthor{\bsnm{Lo}, \binits{A.}},
+\bauthor{\bsnm{Reisch}, \binits{G.}},
+\bauthor{\bsnm{Weidmann}, \binits{N.B.}}:
+\batitle{United they stand: Findings from an escalation prediction
+  competition}.
+\bjtitle{International Interactions}
+\bvolume{48}(\bissue{4}),
+\bfpage{860}--\blpage{896}
+(\byear{2022})
+\end{barticle}
+\endbibitem
+
+%%% 42
+\bibitem[\protect\citeauthoryear{Dorff et~al.}{2020}]{dorff2020networks}
+\begin{barticle}
+\bauthor{\bsnm{Dorff}, \binits{C.}},
+\bauthor{\bsnm{Gallop}, \binits{M.}},
+\bauthor{\bsnm{Minhas}, \binits{S.}}:
+\batitle{Networks of violence: Predicting conflict in nigeria}.
+\bjtitle{The Journal of Politics}
+\bvolume{82}(\bissue{2}),
+\bfpage{476}--\blpage{493}
+(\byear{2020})
+\end{barticle}
+\endbibitem
+
+%%% 43
+\bibitem[\protect\citeauthoryear{Dorff et~al.}{2023}]{dorff2023competition}
+\begin{barticle}
+\bauthor{\bsnm{Dorff}, \binits{C.}},
+\bauthor{\bsnm{Gallop}, \binits{M.}},
+\bauthor{\bsnm{Minhas}, \binits{S.}}:
+\batitle{Network competition and civilian targeting during civil conflict}.
+\bjtitle{British Journal of Political Science}
+\bvolume{53}(\bissue{2}),
+\bfpage{441}--\blpage{459}
+(\byear{2023})
+\end{barticle}
+\endbibitem
+
+%%% 44
+\bibitem[\protect\citeauthoryear{Li et~al.}{2017}]{xu2017threedegree}
+\begin{barticle}
+\bauthor{\bsnm{Li}, \binits{W.}},
+\bauthor{\bsnm{Bradshaw}, \binits{A.E.}},
+\bauthor{\bsnm{Clary}, \binits{C.B.}},
+\bauthor{\bsnm{Cranmer}, \binits{S.J.}}:
+\batitle{A three-degree horizon of peace in the military alliance network}.
+\bjtitle{Science Advances}
+\bvolume{3}(\bissue{3}),
+\bfpage{1601895}
+(\byear{2017})
+\end{barticle}
+\endbibitem
+
+%%% 45
+\bibitem[\protect\citeauthoryear{Jackson and Nei}{2015}]{jackson2015networks}
+\begin{barticle}
+\bauthor{\bsnm{Jackson}, \binits{M.O.}},
+\bauthor{\bsnm{Nei}, \binits{S.}}:
+\batitle{Networks of military alliances, wars, and international trade}.
+\bjtitle{Proceedings of the National Academy of Sciences}
+\bvolume{112}(\bissue{50}),
+\bfpage{15277}--\blpage{15284}
+(\byear{2015})
+\end{barticle}
+\endbibitem
+
+%%% 46
+\bibitem[\protect\citeauthoryear{Gade et~al.}{2019}]{gade2019cooperation}
+\begin{barticle}
+\bauthor{\bsnm{Gade}, \binits{E.K.}},
+\bauthor{\bsnm{Gabbay}, \binits{M.}},
+\bauthor{\bsnm{Hafez}, \binits{M.M.}},
+\bauthor{\bsnm{Kelly}, \binits{Z.}}:
+\batitle{Networks of cooperation: Rebel alliances in fragmented civil wars}.
+\bjtitle{Journal of Conflict Resolution}
+\bvolume{63}(\bissue{9}),
+\bfpage{2071}--\blpage{2097}
+(\byear{2019})
+\end{barticle}
+\endbibitem
+
+%%% 47
+\bibitem[\protect\citeauthoryear{Chadefaux}{2017}]{chadefaux2017conflict}
+\begin{barticle}
+\bauthor{\bsnm{Chadefaux}, \binits{T.}}:
+\batitle{Conflict forecasting and its limits}.
+\bjtitle{Data Science}
+\bvolume{1}(\bissue{1-2}),
+\bfpage{7}--\blpage{17}
+(\byear{2017})
+\end{barticle}
+\endbibitem
+
+%%% 48
+\bibitem[\protect\citeauthoryear{Rovira-Asenjo
+  et~al.}{2013}]{rovira2013predicting}
+\begin{barticle}
+\bauthor{\bsnm{Rovira-Asenjo}, \binits{N.}},
+\bauthor{\bsnm{Gum{\'\i}}, \binits{T.}},
+\bauthor{\bsnm{Sales-Pardo}, \binits{M.}},
+\bauthor{\bsnm{Guimera}, \binits{R.}}:
+\batitle{Predicting future conflict between team-members with parameter-free
+  models of social networks}.
+\bjtitle{Scientific reports}
+\bvolume{3}(\bissue{1}),
+\bfpage{1999}
+(\byear{2013})
+\end{barticle}
+\endbibitem
+
+%%% 49
+\bibitem[\protect\citeauthoryear{Croicu}{2025}]{croicu2025forecasting}
+\begin{botherref}
+\oauthor{\bsnm{Croicu}, \binits{M.}}:
+Forecasting battles: New machine learning methods for predicting armed
+  conflict.
+PhD thesis,
+Uppsala University
+(2025)
+\end{botherref}
+\endbibitem
+
+%%% 50
+\bibitem[\protect\citeauthoryear{Raleigh et~al.}{2010}]{raleigh2010acled}
+\begin{barticle}
+\bauthor{\bsnm{Raleigh}, \binits{C.}},
+\bauthor{\bsnm{Linke}, \binits{A.}},
+\bauthor{\bsnm{Hegre}, \binits{H.}},
+\bauthor{\bsnm{Karlsen}, \binits{J.}}:
+\batitle{Introducing {ACLED}: An armed conflict location and event data set}.
+\bjtitle{Journal of Peace Research}
+\bvolume{47}(\bissue{5}),
+\bfpage{651}--\blpage{660}
+(\byear{2010})
+\doiurl{10.1177/0022343310378914}
+\end{barticle}
+\endbibitem
+
+%%% 51
+\bibitem[\protect\citeauthoryear{Hagberg et~al.}{2007}]{hagberg2007exploring}
+\begin{botherref}
+\oauthor{\bsnm{Hagberg}, \binits{A.}},
+\oauthor{\bsnm{Swart}, \binits{P.J.}},
+\oauthor{\bsnm{Schult}, \binits{D.A.}}:
+Exploring network structure, dynamics, and function using networkx.
+Technical report,
+Los Alamos National Laboratory (LANL)
+(2007)
+\end{botherref}
+\endbibitem
+
+%%% 52
+\bibitem[\protect\citeauthoryear{Freeman}{1978}]{freeman1978centrality}
+\begin{barticle}
+\bauthor{\bsnm{Freeman}, \binits{L.C.}}:
+\batitle{Centrality in social networks conceptual clarification}.
+\bjtitle{Social networks}
+\bvolume{1}(\bissue{3}),
+\bfpage{215}--\blpage{239}
+(\byear{1978})
+\end{barticle}
+\endbibitem
+
+%%% 53
+\bibitem[\protect\citeauthoryear{LeCun et~al.}{2012}]{lecun2012efficient}
+\begin{bchapter}
+\bauthor{\bsnm{LeCun}, \binits{Y.A.}},
+\bauthor{\bsnm{Bottou}, \binits{L.}},
+\bauthor{\bsnm{Orr}, \binits{G.B.}},
+\bauthor{\bsnm{M{\"u}ller}, \binits{K.-R.}}:
+\bctitle{Efficient backprop}.
+In: \bbtitle{Neural Networks: Tricks of the Trade},
+pp. \bfpage{9}--\blpage{48}.
+\bpublisher{Springer},
+\blocation{Berlin, Heidelberg}
+(\byear{2012})
+\end{bchapter}
+\endbibitem
+
+%%% 54
+\bibitem[\protect\citeauthoryear{Kingma and Ba}{2014}]{kingma2015adam}
+\begin{botherref}
+\oauthor{\bsnm{Kingma}, \binits{D.P.}},
+\oauthor{\bsnm{Ba}, \binits{J.}}:
+Adam: A method for stochastic optimization.
+arXiv preprint arXiv:1412.6980
+(2014)
+\end{botherref}
+\endbibitem
+
+%%% 55
+\bibitem[\protect\citeauthoryear{Srivastava
+  et~al.}{2014}]{srivastava2014dropout}
+\begin{barticle}
+\bauthor{\bsnm{Srivastava}, \binits{N.}},
+\bauthor{\bsnm{Hinton}, \binits{G.}},
+\bauthor{\bsnm{Krizhevsky}, \binits{A.}},
+\bauthor{\bsnm{Sutskever}, \binits{I.}},
+\bauthor{\bsnm{Salakhutdinov}, \binits{R.}}:
+\batitle{Dropout: A simple way to prevent neural networks from overfitting}.
+\bjtitle{The Journal of Machine Learning Research}
+\bvolume{15}(\bissue{1}),
+\bfpage{1929}--\blpage{1958}
+(\byear{2014})
+\end{barticle}
+\endbibitem
+
+\end{thebibliography}

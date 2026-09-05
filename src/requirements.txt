@@ -1,0 +1,38 @@
+# Core dependencies for disappearance prediction model
+#
+# Pinned to the exact versions stated in the paper's Reproducibility section
+# (Sec. 3.10): PyTorch 2.0.1, NumPy 1.24.3, Pandas 2.0.2, NetworkX 3.1,
+# scikit-learn 1.3.0. The original publication_code/requirements.txt in the
+# source repo used loose lower bounds (torch>=1.13.0 etc.) that did not match
+# this statement; corrected here as part of migration (see AUDIT.md, Sec. 4).
+
+# Deep Learning
+torch==2.0.1
+torchvision==0.15.2
+
+# Data Processing
+numpy==1.24.3
+pandas==2.0.2
+scikit-learn==1.3.0
+
+# Network Analysis
+networkx==3.1
+
+# Visualization
+matplotlib>=3.6.0
+seaborn>=0.12.0
+
+# Utilities
+tqdm>=4.64.0
+
+# Optional (for Jupyter notebook example)
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# --- Added for revision-experiment scripts (src/revision_experiments/) ---
+# Not present in the original publication_code/requirements.txt; required by
+# exp2_gbm_baseline.py and exp5_shap.py respectively. Versions unpinned here
+# since the paper's Reproducibility statement does not specify them --
+# confirm exact versions used with the corresponding author before archival.
+xgboost
+shap

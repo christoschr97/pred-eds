@@ -1,0 +1,14 @@
+{
+  "experiment": "Exp3 \u2014 Persistence Baseline",
+  "description": "\u0177(t+1) = (disappearances_at_t > 0). No model training. Uses last timestep of UN-normalized input sequences. Same temporal split as paper (train\u22642022-12, test\u22652023-01).",
+  "method": "y_pred = (X_test_raw[:, -1, 2] > 0).astype(int)",
+  "results": {
+    "test_auprc": 0.5704,
+    "test_auroc": 0.6369,
+    "test_brier": 0.3631,
+    "n_test_sequences": 2035,
+    "n_test_months": 24,
+    "predicted_pos_rate": 0.4978,
+    "actual_pos_rate": 0.4826
+  }
+}

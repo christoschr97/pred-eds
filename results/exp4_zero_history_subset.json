@@ -1,0 +1,48 @@
+{
+  "experiment": "Exp4 \u2014 Prior-History-Zero Subset Evaluation",
+  "description": "Attention-LSTM with No Past Disappearances features (15 feat). Zero-history regions = admin1 units with 0 disappearances in training period. Evaluated on zero-history test sequences only. Seeds [42, 123, 456].",
+  "zero_history_regions": [
+    {
+      "country": "Myanmar",
+      "admin1": "Ayeyarwady"
+    },
+    {
+      "country": "Myanmar",
+      "admin1": "Nay Pyi Taw"
+    }
+  ],
+  "n_zero_history_regions": 2,
+  "n_total_regions": 87,
+  "summary": {
+    "full_test_auprc_mean": 0.6717,
+    "full_test_auprc_std": 0.0037,
+    "zh_auprc_mean": 0.2166,
+    "zh_auprc_std": 0.008,
+    "zh_n_sequences": 47,
+    "zh_positive_rate": 0.2979,
+    "zh_random_baseline": 0.2979
+  },
+  "per_seed": [
+    {
+      "seed": 42,
+      "full_test_auprc": 0.6769,
+      "zero_history_auprc": 0.2123,
+      "zero_history_n": 47,
+      "zero_history_pos_rate": 0.2979
+    },
+    {
+      "seed": 123,
+      "full_test_auprc": 0.6683,
+      "zero_history_auprc": 0.2096,
+      "zero_history_n": 47,
+      "zero_history_pos_rate": 0.2979
+    },
+    {
+      "seed": 456,
+      "full_test_auprc": 0.67,
+      "zero_history_auprc": 0.2278,
+      "zero_history_n": 47,
+      "zero_history_pos_rate": 0.2979
+    }
+  ]
+}

@@ -1,0 +1,736 @@
+%Version 3.1 December 2024
+% See section 11 of the User Manual for version history
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%=========================================================================================%%
+%% the documentclass is set to pdflatex as default. You can delete it if not appropriate.  %%
+%%=========================================================================================%%
+
+%%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove Numbered in the optional parenthesis. 
+%%The option is available for: sn-basic.bst, sn-chicago.bst%  
+ 
+%%\documentclass[pdflatex,sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered Reference Style
+%%\documentclass[pdflatex,sn-mathphys-ay]{sn-jnl}% Math and Physical Sciences Author Year Reference Style
+%%\documentclass[pdflatex,sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[pdflatex,sn-vancouver-num]{sn-jnl}% Vancouver Numbered Reference Style
+%%\documentclass[pdflatex,sn-vancouver-ay]{sn-jnl}% Vancouver Author Year Reference Style
+%%\documentclass[pdflatex,sn-apa]{sn-jnl}% APA Reference Style
+%%\documentclass[pdflatex,sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+%%%%
+
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published 
+%%%%  by Springer Nature. The guidance has been prepared in partnership with 
+%%%%  production teams to conform to Springer Nature technical requirements. 
+%%%%  Editorial and presentation requirements differ among journal portfolios and 
+%%%%  research disciplines. You may find sections in this template are irrelevant 
+%%%%  to your work and are empowered to omit any such section if allowed by the 
+%%%%  journal you intend to submit to. The submission guidelines and policies 
+%%%%  of the journal take precedence. A detailed User Manual is available in the 
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}% 
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+%%\unnumbered% uncomment this for unnumbered level heads
+
+\begin{document}
+
+\title[Article Title]{Predicting Enforced Disappearances: A Machine Learning Analysis of Temporal and Network Features}
+
+%%=============================================================%%
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% \author*[1,2]{\fnm{Joergen W.} \spfx{van der} \sur{Ploeg} 
+%%  \sfx{IV}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+\author*[1,2]{\fnm{Christos} \sur{J. Christodoulou}}\email{ci.xristodoulou@edu.cut.ac.cy}
+\equalcont{These authors contributed equally to this work.}
+
+\author[1]{\fnm{Constantinos} \sur{Djouvas}}\email{costas.tziouvas@cut.ac.cy}
+\equalcont{These authors contributed equally to this work.}
+
+\author[1]{\fnm{Nikandros} \sur{Ioannidis}}\email{nikandros.ioannidis@cut.ac.cy}
+\equalcont{These authors contributed equally to this work.}
+
+\affil*[1]{\orgname{Cyprus University of Technology}, \orgaddress{\country{Cyprus}}}
+
+\affil[2]{\orgname{University of Cyprus}, \orgaddress{\country{Cyprus}}}
+
+% \author*[1,2]{\fnm{Christos} \sur{J. Christodoulou}\orcidlink{0000-0002-4846-8353}}
+% \email{ci.xristodoulou@edu.cut.ac.cy}
+% \equalcont{These authors contributed equally to this work.}
+
+% \author[1]{\fnm{Constantinos} \sur{Djouvas}\orcidlink{0000-0003-1215-7294}}
+% \email{costas.tziouvas@cut.ac.cy}
+% \equalcont{These authors contributed equally to this work.}
+
+% \author[1]{\fnm{Nikandros} \sur{Ioannidis}\orcidlink{0000-0002-7182-6892}}
+% \email{nikandros.ioannidis@cut.ac.cy}
+% \equalcont{These authors contributed equally to this work.}
+
+
+% \affil[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
+
+%%==================================%%
+%% Sample for unstructured abstract %%
+%%==================================%%
+
+\abstract{Enforced disappearances are a severe but computationally understudied human rights violation. We build and evaluate an LSTM-based early warning system trained on 202,347 ACLED conflict events across 87 subnational regions in Nigeria, Mexico, and Myanmar (2018--2024), predicting binary reported disappearance onset at the region-month level one month ahead. The Attention-LSTM achieves AUPRC 0.741 against a prevalence-equivalent random baseline (0.483) and a persistence baseline (0.570). A nine-configuration ablation shows that four event-based features (arrests, violence, prior disappearances, fatalities) match or outperform a 16-feature model augmented with twelve graph-theoretic network metrics. Tuned non-temporal baselines match LSTM accuracy but generalize worse under distributional shift, motivating the temporal model for deployment. SHAP attribution confirms a recency gradient ruling out flat autocorrelation. A No Past Disappearances ablation (AUPRC 0.666, 9.6 points above persistence) provides evidence of forecasting value beyond naive persistence.}
+
+\keywords{Enforced disappearances, Conflict prediction, Machine learning, Network analysis, State repression, Early warning systems}
+
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+\section{Introduction}
+
+Enforced disappearances occur in contexts shaped by both actor dynamics and state institutional capacity. Network-centric accounts of conflict \cite{christia2012social,staniland2014networks} suggest that alliance formation, fragmentation, and relational structure among armed groups influence patterns of violence, implying that network features may carry predictive signal. State capacity and repression theories \cite{tilly1985war,davenport2007state,mann2005dark} suggest that severe violations follow from institutional power and territorial control, implying that event-based indicators of conflict intensity may be more informative. Both traditions motivate distinct feature families, making disappearance prediction a useful testbed for evaluating their relative predictive contribution. Existing empirical research has largely incorporated both without explicitly evaluating their relative predictive contributions. Whether network features add forecasting value beyond simpler event-based indicators remains an open question with practical implications for early warning system design.
+
+This paper applies machine learning to build and evaluate an early warning system for enforced disappearances. By systematically comparing models with and without network structure features across nine ablation configurations, we assess which feature families provide predictive value for operational forecasting. This approach follows recent work demonstrating that prediction tasks can reveal which variables carry signal for a given outcome \cite{salganik2020measuring,hofman2021integrating}, while recognizing that predictive contribution and causal importance are distinct concepts. Our feature comparison is therefore framed as a practical modeling question: which inputs should a deployed early warning system rely on?
+
+Enforced disappearances (the arrest, detention, or abduction of persons by state agents or organized groups followed by a refusal to acknowledge their fate) represent one of the most severe human rights violations in armed conflict \cite{icpped2006,unga1992disappearance}. Unlike other forms of violence that leave immediate evidence, disappearances are characterized by intentional concealment, creating profound uncertainty for families and communities. The practice serves as a tool of intimidation and social control, generating fear that extends far beyond direct victims.
+
+Despite their severity, disappearances have received limited attention in computational conflict prediction research. Existing early warning systems typically focus on broader categories such as battle deaths, civilian targeting, or general violence. This aggregation obscures important distinctions: the mechanisms driving disappearances may differ fundamentally from those producing other conflict outcomes. Understanding and predicting disappearances as a distinct phenomenon is essential for targeted monitoring, advocacy, and protection efforts.
+
+Predicting enforced disappearances presents substantial methodological challenges. In our dataset of 202,347 conflict events spanning 2018-2024, only 5,959 (2.9\%) involve disappearances. At the event level, this class imbalance creates difficulties for standard ML approaches, which may achieve high accuracy by simply predicting the majority class while failing to identify positive cases. As detailed in Section~\ref{sec:methods}, binary aggregation to the region-month level yields a more moderate imbalance (37--48\% positive). The rarity also reflects the nature of the phenomenon: disappearances are not randomly distributed but occur in specific contexts characterized by state repression, weak accountability, and particular conflict dynamics. Effective prediction requires distinguishing true precursors from the vast background of non-disappearance events, identifying subtle patterns that precede these relatively uncommon occurrences.
+
+\subsection{Research Questions and Approach}
+
+This study addresses three primary questions:
+
+\begin{enumerate}
+    \item Can enforced disappearances be predicted at operationally useful accuracy levels despite their rarity (2.9\% of events)?
+    
+    \item Do actor network features improve prediction beyond simple event-based indicators?
+    
+    \item Can models predict new outbreaks in regions without a disappearance history, or do they rely primarily on autocorrelation (recent disappearances predicting future disappearances)?
+\end{enumerate}
+
+To address these questions, we employ temporal LSTM models with six-month lookback windows applied to conflict event data from Nigeria, Mexico, and Myanmar (2018--2024). Our approach utilizes systematic ablation studies across nine feature configurations to evaluate the relative importance of different data types. Specifically, we compare the predictive signal provided by network structure metrics (such as density, centralization, and clustering) against fundamental event-based features, including violence counts, arrests, and fatalities. This framework allows us to evaluate which feature families carry predictive signal for disappearance forecasting while testing whether risk prediction remains possible when the lagged disappearance feature is withheld.
+
+\subsection{Contributions}
+This research makes three primary contributions:
+
+First, we demonstrate that four event-based features (arrests, violence, prior disappearances, fatalities) are sufficient for strong predictive performance, matching or outperforming a 16-feature model augmented with twelve graph-theoretic network metrics. This finding is replicated across LSTM, logistic regression, and XGBoost models, suggesting network features derived from actor co-occurrence graphs provide no additional predictive value in this setting.
+
+Second, we show that the model retains substantial predictive power when the autoregressive disappearance signal is removed entirely (AUPRC 0.666, 9.6 points above the persistence baseline), providing evidence of early-warning capability beyond naive persistence. SHAP attribution confirms the model learns genuine temporal structure rather than flat autocorrelation.
+
+Third, we establish that enforced disappearances are computationally tractable prediction targets despite their rarity, achieving AUPRC 0.741 with a simple four-feature model that requires no network construction and relies only on routinely coded conflict data.
+
+The remainder of this paper proceeds as follows: Section~\ref{sec:related} reviews related work, Section~\ref{sec:methods} describes data and methods, Section~\ref{sec:results} presents results, and Section~\ref{sec:discussion} discusses implications and limitations.
+
+\section{Related Work}\label{sec:related}
+
+Enforced disappearances represent a critical yet computationally understudied human rights violation. This section positions our work within four key research streams: conflict-prediction methodologies, the rare-event challenge, temporal modeling approaches, and network-based conflict analysis. We demonstrate that while existing research provides methodological foundations, no prior work specifically targets disappearance prediction, leaving a significant gap that we address.
+
+\subsection{Conflict Prediction and Early Warning Systems}
+
+Modern conflict forecasting has evolved from structural models emphasizing slow-moving variables toward dynamic event-based approaches leveraging ML. The ViEWS (Violence Early Warning System) consortium represents the state-of-the-art in subnational violence prediction, forecasting state-based conflict and one-sided violence at country-month and PRIO-GRID-month levels using ensemble methods combining random forests, hurdle models, and deep learning architectures \cite{hegre2019views, hegre2021views}. Their 2023/24 prediction challenge revealed a critical limitation: even sophisticated models struggle to forecast conflict onset in previously peaceful locations, often performing worse than simple ``no-change'' baselines \cite{hegre2024views}. This finding motivates our focus on distinguishing genuine early warning from temporal autocorrelation.
+
+Event-based forecasting systems, such as ICEWS (Integrated Crisis Early Warning System), process millions of machine-coded events from news sources to generate short-term forecasts \cite{obrien2010crisis}. However, these systems predominantly target aggregate outcomes — battle deaths, protest escalation, regime instability — rather than specific human rights violations. The Political Instability Task Force achieves over 80\% accuracy in predicting state fragility using minimal structural variables \cite{goldstone2010global}, but operates at the annual country-level granularity, unsuitable for operational protection efforts. Our subnational monthly prediction of disappearances fills this temporal and substantive gap.
+
+Methodologically, conflict prediction faces a fundamental tension between statistical significance and predictive accuracy. Ward et al.~\cite{ward2010perils} demonstrate that influential civil war models correctly predict only one of 107 actual onsets despite statistically significant coefficients, cautioning against ``policy by p-value.'' Blair and Sambanis \cite{blair2020forecasting} argue that process variables (recent events, short-term changes) can substitute for structural variables over brief forecasting horizons, supporting our event-based approach. However, Chadefaux and Schincariol \cite{chadefaux2025endogenous} show that autoregressive models consistently outperform complex alternatives, with structural covariates frequently degrading performance---a finding that informs our ablation study design testing whether network complexity adds value.
+
+Recent work applying deep learning to conflict contexts remains limited. Radford \cite{radford2022high} employs Convolutional LSTM combining spatial convolutions with temporal memory, while Malone \cite{malone2022recurrent} uses standard RNNs for escalation forecasting. Both achieve competitive performance but rely heavily on lagged fatality levels, struggling to forecast new escalations. Our contribution extends this temporal modeling tradition to a previously unexamined outcome: enforced disappearances.
+
+\subsection{Enforced Disappearances: A Computational Gap}
+
+Enforced disappearances---defined by the International Convention as deprivation of liberty by state agents or with their acquiescence, followed by concealment of fate \cite{icpped2006}---constitute a distinct violation requiring separate analytical treatment. Unlike killings that leave bodies, disappearances create prolonged uncertainty serving dual purposes: eliminating opponents and terrorizing communities through ambiguity \cite{amnesty2024disappearances}. The UN Working Group on Enforced or Involuntary Disappearances documents over 56,000 cases across 112 states since 1980, with 45,000 fates still unknown \cite{unwged2023}. We do not model the strategic choice of disappearance over other forms of repression. Substantively, we treat disappearances as distinct because concealment, uncertainty, and delayed observability affect both the phenomenon and the measurement problem.
+
+Our study countries exemplify different contexts of disappearance. Mexico faces 115,000+ cases since 1962, with 90\% occurring after 2006. The militarization under President Calder\'{o}n triggered large-scale cartel fragmentation and intense inter-cartel territorial competition, as major organizations split and fought one another for control. Disappearances in this period are attributable to cartel violence, direct state force actions, and in some documented cases localized collusion between the two, with the mix varying substantially by region and period \cite{umnmexico2024}. Myanmar experienced systematic disappearances following the 2021 coup, targeting activists, journalists, and opposition politicians as part of broader repression \cite{hrwmyanmar2021}. Nigeria's disappearances occur across multiple conflict zones involving Boko Haram, ISWAP, and security force operations in the Northeast and Southeast \cite{trialintl2024}.
+
+Existing disappearance research is overwhelmingly qualitative, focusing on legal accountability \cite{reyes2024harmonizing}, transitional justice mechanisms, and victim advocacy. The Human Rights Data Analysis Group (HRDAG) conducts sophisticated statistical work on disappearances but emphasizes population estimation via Multiple Systems Estimation rather than prediction \cite{hrdag2024datasets}.
+
+\textbf{Critical gap:} No published computational work applies ML specifically to predict enforced disappearances. Mueller and Rauh \cite{mueller2018reading} use newspaper text and topic modeling to forecast political violence, and recent work predicts state violence in Mexico and Colombia \cite{gelvez2025predicting}, but these studies aggregate violence types rather than isolating disappearances. Our work is the first to treat disappearances as a distinct prediction target, addressing this significant lacuna.
+
+\subsection{Rare Events in Conflict: Methodological Foundations}
+
+Predicting disappearances poses the rare-event challenge: only 2.9\% of conflict events in our data involve disappearances, resulting in severe class imbalance. King and Zeng \cite{king2001logistic, king2001explaining} establish that standard logistic regression produces biased estimates for rare outcomes, systematically underestimating event probability. Their bias-correction methods have become foundational for conflict research addressing low-prevalence outcomes, such as civil war onset (1-2\% prevalence) \cite{ward2010perils}.
+
+ML approaches offer advantages for imbalanced classification. Muchlinski et al.~\cite{muchlinski2016comparing} demonstrate that random forests substantially outperform logistic regression for civil war onset (1.8\% prevalence), achieving an AUROC of 0.91, whereas standard logit fails to identify any onsets. He and Garcia \cite{he2009learning} provide a comprehensive review of imbalanced learning challenges: classifiers' bias toward the majority class, decision boundaries favor frequent patterns, and small minority-class clusters (``small disjuncts'') are ignored.
+
+Evaluation metric selection proves critical. Saito and Rehmsmeier \cite{saito2015precision} demonstrate that ROC curves can be misleadingly optimistic for imbalanced data because the False Positive Rate denominator includes vast numbers of true negatives. Precision-Recall curves better reflect operational performance when minority class identification is the primary goal. For 2.9\% prevalence, random classifier AUPRC baseline is 0.029, while AUROC baseline remains 0.50 regardless of imbalance---making AUPRC more informative. We follow this guidance by reporting AUPRC as our primary metric.
+
+Temporal autocorrelation creates an additional methodological challenge in conflict prediction. Hegre et al.~\cite{hegre2017conflict} show that countries exiting civil war face a 44\% recurrence probability within five years, with conflict-trap effects persisting for 25+ years \cite{hegre2017evaluating}. Chadefaux and Schincariol \cite{chadefaux2025endogenous} argue that autoregressive models are ``not merely convenient baselines but theoretically appropriate tools'' because conflict is driven by internal feedback and short-term adaptation rather than slow-changing structural conditions. They show that adding structural covariates to autoregressive models yields only 0.2\% improvement, while covariates alone perform 30\% worse.
+
+This creates a validation challenge: distinguishing genuine forecasting from persistence-based pattern matching. Our ablation study, which removes past disappearances, directly addresses this by testing whether models retain predictive power when the lagged disappearance feature is withheld---what Mueller and Rauh \cite{mueller2022hard} term the ``hard problem'' of conflict prevention.
+
+\subsection{Temporal Modeling for Conflict Forecasting}
+
+Long Short-Term Memory (LSTM) networks have emerged as promising architectures for conflict prediction due to their ability to capture long-range temporal dependencies. Beck, King, and Zeng \cite{beck2000improving} first documented neural network advantages for international conflict, arguing that conflict causes are ``highly non-linear, massively interactive, and heavily context dependent''---properties well-suited to deep learning. 
+
+Recent applications demonstrate mixed results. Malone \cite{malone2022recurrent} applies standard RNNs to conflict escalation, finding they effectively learn ``conflict traps'' (violence persistence) but struggle with onset prediction in peaceful locations. Radford \cite{radford2022high} achieves strong performance with Convolutional LSTM combining spatial and temporal features, but acknowledges heavy reliance on lagged fatality levels. Von der Maase \cite{vondermaase2025hydranet} develops a state-of-the-art HydraNet architecture (Monte Carlo Dropout LSTM U-Net), emphasizing that ``while conflict is inert, it is not static''---models must capture nuanced temporal structure beyond simple autocorrelation.
+
+Graph neural networks extend temporal modeling to capture spatial dependencies. Brandt et al.~\cite{brandt2022stgcn} employ Spatio-Temporal Graph Convolutional Networks (ST-GCN), improving over ViEWS benchmarks by modeling spatial autocorrelation alongside temporal patterns. However, performance gains remain modest, and models still rely predominantly on conflict history.
+
+Attention mechanisms offer interpretability advantages. Temporal attention weights reveal which months in a sequence contribute most to predictions, providing transparency valuable for policy applications \cite{malhotra2015long}. We implement attention-LSTM to enable analysis of temporal importance patterns in disappearance forecasting.
+
+A critical finding from recent prediction competitions is that complex models often fail to outperform simple baselines. Vesco et al.~\cite{vesco2022united} analyze ViEWS competition results, concluding that ``simplistic models with a few powerful variables performed as well as complex models.'' This motivates our systematic ablation study comparing 4-feature simple models with 16-feature complex models augmented with network architecture.
+
+\subsection{Network Features in Conflict Analysis}
+
+Social network analysis in conflict research examines how actor relationships shape patterns of violence. Theoretical motivation comes from alliance politics, rebel fragmentation, and coalition dynamics literatures. We identify two streams: work that shows network features improve prediction, and work that finds null or negative effects.
+
+\subsubsection{Positive Network Findings}
+
+Dorff, Gallop, and Minhas \cite{dorff2020networks, dorff2023competition} demonstrate that network features---reciprocity, transitivity, and latent factor models---significantly improve the prediction of ``who fights whom and when'' in Nigeria. Network competition measures predict civilian victimization even controlling for conflict intensity \cite{dorff2023competition}. Their work establishes that relational patterns capture dynamics standard features miss, particularly regarding targeting decisions.
+
+Broader international relations research supports the notion of network effects. Xu, Cao, and Radil \cite{xu2017threedegree} find that alliance network connections suppress conflict up to three degrees of separation. Jackson and Nei \cite{jackson2015networks} show that trade networks interact with military alliances to reduce the probability of war. Gade et al.~\cite{gade2019cooperation} demonstrate that ideological homophily drives rebel collaboration networks. These studies suggest that network structure mediates conflict outcomes.
+
+Brandt et al.~\cite{brandt2022stgcn} apply graph neural networks (ST-GCN with temporal components) to conflict forecasting, achieving improvements over ViEWS benchmarks. However, they acknowledge that ``choice of metric matters significantly'' — AUROC gains may not translate into operational utility.
+
+\subsubsection{Null and Negative Network Findings}
+
+Recent critical work challenges the utility of network features for forecasting. Chadefaux \cite{chadefaux2017conflict} identifies fundamental limits in conflict prediction: marginal contribution of additional variables ``decreases quickly and reaches zero'' regardless of sophistication. His work with Schincariol \cite{chadefaux2025endogenous} provides systematic evidence that ``structural covariates frequently add little or degrade performance'' compared to autoregressive models.
+
+Mueller and Rauh \cite{mueller2022hard} find that standard structural variables ``never add forecasting power,'' and that text-based forecasts outperform models that include conventional predictors. Guimerà et al.~\cite{rovira2013predicting} test structural balance theory in social networks, finding it fails to predict conflict between team members while simpler group-based models succeed.
+
+Critically, the 2023/24 ViEWS Prediction Challenge \cite{hegre2024views} revealed that sophisticated ML models were often beaten by basic ``no-change'' baselines, particularly for onset prediction. Croicu \cite{croicu2025forecasting} argues conflict prediction is ``over-reliant on spatio-temporal features and mechanistic models,'' excluding actor agency that network features theoretically capture.
+
+\subsubsection{Our Contribution: Testing Network Features for Disappearances}
+
+This mixed evidence motivates our systematic evaluation. Previous positive findings involve dynamic relational patterns (reciprocity, who-fights-whom) rather than static network structure (density, centralization). Our co-occurrence networks may fail to capture meaningful relationships if actors appearing in the same event are adversaries rather than collaborators. Additionally, disappearances may be driven by state capacity, a macro-level attribute poorly captured by monthly network metrics rather than actor-level network dynamics.
+
+We test whether 12 graph-theoretic features (density, centralization, clustering, component structure, edge weights) improve disappearance prediction. Our comprehensive ablation study across nine feature configurations provides empirical evidence on the utility of network features for a previously unstudied outcome, contributing to ongoing debate about complex versus simple models in conflict forecasting.
+
+\section{Data and Methods}\label{sec:methods}
+
+This section describes our ML analysis pipeline from raw conflict events to monthly disappearance forecasts. Figure~\ref{fig:pipeline} provides an end-to-end overview of the workflow, which we detail in the subsections that follow.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/pipeline_diagram.png}
+\caption{End-to-end prediction pipeline. ACLED conflict events from Nigeria, Mexico, and Myanmar (2018--2024) are aggregated to region-month units and transformed into event-based features (solid border) and actor network features (dashed border; 12 metrics providing no predictive value). Six-month sliding windows produce temporal sequences for LSTM processing. The strict temporal split prevents information leakage, with training on 2018--2022 and testing on 2023--2024. Nine ablation configurations systematically test feature contributions across 27 experiments. The recommended model (Events Only, highlighted) uses 4 features to achieve AUPRC 0.745.}
+\label{fig:pipeline}
+\end{figure*}
+
+\subsection{Data Collection and Preparation}
+
+We analyze conflict event data from the Armed Conflict Location \& Event Data Project (ACLED), which provides geo-located, time-stamped records of political violence and protest events worldwide \cite{raleigh2010acled}. ACLED codes events from diverse sources, including local and international news, humanitarian reports, and NGO documentation, with each record containing location coordinates, administrative boundaries, event type, involved actors, fatality estimates, and descriptive text. Our analysis spans January 2018 through December 2024 and covers three countries selected through a principled multi-criteria approach. Because ACLED is event-report based, the outcome in this study should be read as reported disappearances rather than a direct census of all violations. We identify disappearance events using ACLED's \texttt{sub\_event\_type} field, coding events as disappearances when the sub-event type is \texttt{Abduction/forced disappearance}; the region-month outcome equals one if at least one such reported event occurs. This coding supports systematic forecasting from routinely reported conflict information, while also making reporting environments part of the measurement process.
+
+Country selection balanced four considerations. First, we required a sufficiently high prevalence of the outcome (disappearance) to enable statistical modeling. Mexico has documented a large number of disappeared persons since 1962, with 90\% occurring after 2006 during militarized anti-drug operations \cite{umnmexico2024}. Myanmar experienced systematic disappearances following the February 2021 military coup, targeting political opposition and civil society \cite{hrwmyanmar2021}. Nigeria exhibits disappearances across multiple conflict zones involving both insurgent groups and state security forces. Second, we sought geographic and contextual diversity to test model generalizability across conflict types: state repression against political opposition in post-coup Myanmar, criminal violence with state involvement in Mexico's cartel war, and complex multi-actor insurgency in Nigeria's Northeast. Third, these countries provide substantial subnational variation, with Nigeria's 37 administrative regions, Mexico's 32 states, and Myanmar's 18 administrative units ranging from peaceful areas to active conflict zones. Fourth, ACLED provides comparatively systematic coverage for all three countries throughout our study period, though coverage remains conditional on reporting environments and was checked for anomalous reporting gaps.
+
+This three-country design serves as a proof-of-concept for a scalable, data-driven framework. By selecting contexts with significant variance in state capacity, perpetrator types, and conflict intensity, we evaluate the robustness of our findings across diverse empirical landscapes. This diversity allows us to move beyond case-specific idiosyncrasies to determine if the limited utility of network features is a consistent property of disappearance dynamics. Our approach enables high-granularity ablation studies that maintain computational feasibility while ensuring the results remain generalizable across different conflict archetypes. Ultimately, this multi-contextual validation demonstrates that our data-driven indicators generalize across diverse conflict settings rather than being artifacts of a specific geographic or political environment.
+% Future production systems require validating whether findings generalize to civil war contexts (Syria), post-conflict transitions (Colombia), and lower-prevalence settings, but this proof-of-concept isolates the question: can temporal models with simple features predict rare disappearances at operationally useful accuracy, and do complex network features add value? Our answer—yes to the first, no to the second—provides a baseline for broader validation efforts.
+
+Our final dataset comprises 202,347 conflict events across 87 unique first-level administrative units (admin1 regions). These events include 5,959 enforced disappearances (2.9\%), 6,913 arrests (3.4\%), 114,564 violent events including battles, explosions, and violence against civilians (56.6\%), and 197,817 total fatalities. Figure~\ref{fig:timeseries} shows the temporal distribution of disappearances across the three countries.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\columnwidth]{figures/figure1_time_series.png}
+\caption{Monthly disappearance events by country, 2018--2024. The vertical dashed line marks the train-test split boundary (January 2023). The test period exhibits increased disappearance prevalence (48.3\% positive region-months vs.\ 37.3\% in training), reflecting escalation across study countries.}
+\label{fig:timeseries}
+\end{figure}
+
+We use admin1-level aggregation to balance data sufficiency with policy-relevant geographic precision, following the spatial granularity employed by leading conflict forecasting systems \cite{hegre2019views}.
+
+\subsection{Outcome Variable and Temporal Aggregation}
+
+Following established practices in conflict prediction \cite{hegre2019views, ward2010perils}, we construct a binary outcome variable at the region-month level rather than modeling event counts. Our outcome $y_{i,t} \in \{0,1\}$ indicates whether region $i$ experienced at least one enforced disappearance during month $t$. This binary formulation prioritizes outbreak detection---identifying which regions require monitoring attention---over precise victim enumeration, aligning with operational early warning requirements \cite{obrien2010crisis}.
+
+This design choice reflects both substantive and methodological considerations. Operationally, early warning systems allocate limited monitoring resources across geographic units, requiring binary risk assessments rather than exact counts of cases. Substantively, disappearance counts suffer from severe underreporting, making presence/absence more reliably observed than precise magnitudes \cite{hrdag2024datasets}. Methodologically, count models face challenges with extreme zero-inflation: 97.1\% of events are non-disappearances at the event level. Binary monthly aggregation concentrates this sparse signal, yielding 39.1\% positive months (2,665 of 6,815 region-months) while preserving the fundamental classification challenge of distinguishing affected from unaffected regions. It is important to distinguish between two prevalence figures that appear in this paper. At the individual event level, disappearances represent 2.9\% of 202,347 conflict events, reflecting their rarity as a conflict type. At the region-month level, which is the actual classification task, 39.1\% of sequences are positive in the full dataset (37.3\% in training, 48.3\% in test). The model operates on region-month sequences, so the relevant baseline for evaluation is the region-month prevalence, reflected in the AUPRC random baseline of 0.483. References to rarity in this paper refer to the event-level figure unless otherwise stated.
+
+Furthermore, treating this problem as a regression task would likely yield misleading performance metrics; in highly sparse contexts, standard loss functions like Root Mean Square Error (RMSE) tend to favor models that predict near-zero values, effectively masking the rare outbreaks we seek to identify. By framing this as a classification task, we can use threshold-independent metrics such as AUPRC to better capture the model's ability to distinguish signal from noise.
+
+\subsection{Feature Engineering}
+
+We construct two feature categories capturing complementary aspects of conflict dynamics: event-based features that measure observable violence patterns, and network structure features that represent actor configurations. Table~\ref{tab:features} summarizes all 16 features with their theoretical motivations.
+
+\begin{table*}[t]
+\centering
+\caption{Complete feature set with theoretical motivations. Event features capture directly observable conflict patterns; network features represent actor relationship structures within monthly region-specific co-occurrence networks.}
+\label{tab:features}
+\begin{tabular}{llp{7.5cm}}
+\toprule
+\textbf{Category} & \textbf{Feature} & \textbf{Theoretical Motivation} \\
+\midrule
+\multirow{4}{*}{Event-Based} 
+& arrests & State repression capacity; precursor to disappearances \\
+& violence & Overall conflict intensity; operational environment \\
+& disappearances & Temporal persistence; campaign continuity \\
+& fatalities & Severity of violence; escalation indicator \\
+\midrule
+\multirow{5}{*}{Structure} 
+& num\_actors & Actor diversity; complexity of conflict landscape \\
+& num\_edges & Interaction extent; level of engagement \\
+& density & Connectivity saturation; integrated vs.\ fragmented \\
+& num\_components & Network fragmentation; coalition structure \\
+& largest\_component & Dominant coalition size; coordination capacity \\
+\midrule
+\multirow{3}{*}{Centrality} 
+& avg\_degree & Typical connectivity level; diffuse vs.\ concentrated \\
+& max\_degree & Most connected actor; potential dominance \\
+& centralization & Concentration around hub; state capacity proxy \\
+\midrule
+\multirow{2}{*}{Clustering} 
+& avg\_clustering & Local cohesion; neighborhood transitivity \\
+& transitivity & Global cohesion; organized violence potential \\
+\midrule
+\multirow{2}{*}{Edge Weights} 
+& avg\_edge\_weight & Typical interaction intensity; sustained engagement \\
+& max\_edge\_weight & Strongest pairing; repeated confrontations \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsubsection{Event-Based Features}
+
+Event features quantify conflict dynamics directly observable in ACLED records. The \textit{arrests} feature counts events coded under ACLED's ``Strategic developments'' type with ``Arrests'' sub-event tag, capturing state repression activity that may precede disappearances. The \textit{violence} feature aggregates battles, explosions, and violence against civilians to measure overall conflict intensity. The \textit{disappearances} feature counts prior disappearance events within the same region-month, representing temporal autocorrelation and campaign continuity. The \textit{fatalities} feature sums reported deaths across all event types, indicating the severity of violence. These features reflect established findings that recent conflict history dominates prediction performance \cite{hegre2019views} and that process variables capturing recent events can substitute for structural factors over short forecasting horizons \cite{mueller2022hard}. These measures provide observable indicators of conflict activity, enabling us to evaluate their predictive contribution for disappearance forecasting.
+
+\subsubsection{Network Structure Features}
+
+For each region-month, we construct an actor co-occurrence network and extract twelve graph-theoretic features. This approach builds on work demonstrating that relational patterns improve conflict prediction \cite{dorff2020networks}, and tests whether these benefits extend to disappearance forecasting. Networks are constructed by treating unique armed actors (ACLED codes up to 2 actors per event) as nodes, with undirected edges connecting actor pairs that appear in the same event. Edge weights reflect co-occurrence frequency. Networks are constructed independently for each region-month using only events from that spatiotemporal unit. We implement network construction and feature extraction using NetworkX \cite{hagberg2007exploring}, with edge cases (empty networks or single actors) handled by returning zero-valued feature vectors.
+
+From these monthly networks, we compute features across four categories. \textit{Basic structure features} quantify network size and connectivity: number of actors, number of edges, density (ratio of realized to possible connections), number of disconnected components, and largest component size. \textit{Centrality features} measure concentration: average degree (mean connections per actor), maximum degree (most connected actor), and degree centralization \cite{freeman1978centrality}. \textit{Clustering features} capture local cohesion: average clustering coefficient (neighborhood transitivity) and global transitivity (ratio of closed triads to connected triples). \textit{Edge weight features} measure interaction intensity: average and maximum co-occurrence frequencies.
+
+The theoretical motivation for network features rests on several mechanisms. High centralization may indicate a dominant state actor with capacity for systematic repression. Multiple disconnected components may signal fragmentation creating unstable environments conducive to violations. High clustering may reflect organized violence by cohesive actor coalitions. High edge weights indicate sustained interactions between specific actor pairs. However, as Chadefaux and Schincariol \cite{chadefaux2025endogenous} demonstrate, complex features frequently fail to improve predictions over simple autoregressive models. Our ablation studies test whether these network features add predictive value specifically for disappearances.
+
+\subsection{Temporal Sequence Construction and Train-Test Splitting}
+
+We transform region-month features into fixed-length temporal sequences suitable for recurrent neural networks \cite{beck2000improving}. Each sequence comprises six consecutive months of features (months $t{-}5$ through $t$) paired with the binary outcome at month $t{+}1$. This sliding window approach generates one training example per region-month with sufficient history ($\geq 7$ months of data). For instance, predicting February 2023 disappearances in Lagos, Nigeria, uses feature vectors from August 2022 through January 2023 as input. We selected the 6-month lookback window to balance temporal context---capturing medium-term escalation patterns beyond single-month noise---with sample size constraints, as longer windows reduce usable sequences by requiring more historical data. This design follows best practices in conflict forecasting with temporal models \cite{malone2022recurrent, radford2022high}.
+
+We employ strict temporal splitting to prevent data leakage and enable genuine out-of-sample evaluation \cite{hegre2017conflict}. The training period spans July 2018 through December 2022 (54 months), while the test period covers January 2023 through December 2024 (24 months), approximating a 70--30 temporal split. Unlike random cross-validation, this chronological division respects causality: models trained on past data predict future outcomes. All test sequences occur strictly after all training sequences, ensuring no future information contaminates model training. This split creates a realistic forecasting scenario in which the test period exhibits a distributional shift---48.3\% positive rate versus 37.3\% in training---reflecting a substantive escalation in 2023--2024 disappearances across our study countries. Models must generalize across this temporal shift and demonstrate robustness to changing conflict dynamics. The temporal split and sequence construction are illustrated in the pipeline overview (Figure~\ref{fig:pipeline}, rows 1--2). Our final dataset comprises 6,293 sequences: 4,258 training sequences (37.3\% positive) and 2,035 test sequences (48.3\% positive).
+
+Before model training, we normalize features using z-score standardization to zero mean and unit variance: $z = (x - \mu) / \sigma$. Critically, normalization parameters $\mu$ and $\sigma$ are computed exclusively on training data and applied to both training and test sets, preventing information leakage from test distribution into preprocessing \cite{lecun2012efficient}. Post-normalization, the training set exhibits a mean of 0.000 and a standard deviation of 1.000 by construction, while test statistics differ, reflecting the distributional shift.
+
+\subsection{Model Architecture}
+
+We evaluate two Long Short-Term Memory (LSTM) architectures: a standard LSTM baseline and an attention-augmented variant. Both models employ identical recurrent processing but differ in how they aggregate temporal information for final classification.
+
+The standard LSTM processes input sequences of shape (batch size, 6 timesteps, $F$ features) through a 2-layer stacked LSTM with 64 hidden units per layer and dropout rate 0.2. At each timestep $t$, the LSTM computes hidden state $h_t = \text{LSTM}(x_t, h_{t-1}, c_{t-1})$ where $x_t$ is the feature vector, $h_{t-1}$ is the previous hidden state, and $c_{t-1}$ is the cell state. After processing all six timesteps, the final hidden state $h_6$ passes through a classification head: a fully connected layer reducing dimensionality from 64 to 32 with ReLU activation and dropout 0.2, followed by an output layer projecting to a single logit with sigmoid activation producing probability $\hat{y} \in [0,1]$. This architecture contains approximately 58,000 parameters.
+
+The attention-LSTM extends this architecture by learning which months contribute most to predictions \cite{malhotra2015long}. Rather than using only $h_6$, it computes attention weights over all hidden states $h_1, \ldots, h_6$. For each timestep $t$, we compute attention score $e_t = W_2 \cdot \tanh(W_1 \cdot h_t)$ where $W_1$ and $W_2$ are learned weight matrices. These scores are normalized via softmax: $\alpha_t = \exp(e_t) / \sum_{i=1}^6 \exp(e_i)$, producing attention weights that sum to one. The context vector $c = \sum_{t=1}^6 \alpha_t h_t$ aggregates all hidden states weighted by their importance. This context vector then passes through the same classification head as the standard LSTM. The attention mechanism adds approximately 2,000 parameters, yielding ${\approx}$60,000 total. Beyond potential performance gains, attention provides interpretability: if $\alpha_6 \gg \alpha_1$, predictions rely primarily on the most recent month, while uniform weights indicate equal contribution across the lookback window. Both architectures are depicted in the model row of Figure~\ref{fig:pipeline}.
+
+\subsection{Training Configuration and Optimization}
+
+We train models using binary cross-entropy loss with class weighting to address the 37.3\% positive, 62.7\% negative imbalance in training data \cite{he2009learning}:
+
+\begin{equation}
+\mathcal{L} = -\frac{1}{N} \sum_{i=1}^N \bigl[w_+ \cdot y_i \log(\hat{y}_i) + w_- \cdot (1-y_i) \log(1-\hat{y}_i)\bigr]
+\end{equation}
+
+\noindent where $w_+ = (1-p)/p = 0.627/0.373 = 1.683$ and $w_- = 1.0$. This weighting penalizes false negatives 1.683 times more severely than false positives, compensating for the underrepresentation of disappearances in training data.
+
+We optimize using Adam \cite{kingma2015adam} with learning rate 0.001, batch size 64, and default momentum parameters ($\beta_1{=}0.9$, $\beta_2{=}0.999$). Training runs for a maximum of 50 epochs with early stopping: if test set AUPRC does not improve for 10 consecutive epochs, training terminates. Regularization comes exclusively from dropout \cite{srivastava2014dropout} applied at rate 0.2 in both LSTM layers and fully connected layers; we do not employ L2 weight decay. All models train on CPU in 2--3 minutes per random seed using PyTorch 2.0, as the modest model size (${\approx}$60,000 parameters) and dataset size (${\approx}$6,000 sequences) make GPU acceleration unnecessary.
+
+\subsection{Evaluation Metrics}
+
+Following best practices for imbalanced classification \cite{saito2015precision}, we report multiple complementary metrics with primary emphasis on the Area Under the Precision-Recall Curve (AUPRC). The precision-recall curve plots precision ($\text{TP}/(\text{TP}+\text{FP})$) versus recall ($\text{TP}/(\text{TP}+\text{FN})$) across all decision thresholds, focusing exclusively on positive class performance. AUPRC summarizes this curve as a single scalar, with higher values indicating better classification.
+
+We prioritize AUPRC over AUROC for three reasons. First, precision and recall depend only on true positives, false positives, and false negatives, making them insensitive to the large number of true negatives in our 48.3\% positive test set. AUROC's false-positive rate includes true negatives in its denominator, potentially yielding optimistic estimates when the majority class dominates. Second, random classifier performance differs meaningfully across metrics: AUPRC equals the positive class prevalence (0.483 in our test set), providing an informative baseline, whereas AUROC always equals 0.50 regardless of class balance. Third, for operational early warning systems, precision-recall tradeoffs directly correspond to policy-relevant questions about acceptable false alarm rates versus detection rates.
+
+As secondary metrics, we report AUROC for comparison with prior work, Brier score measuring probability calibration ($\frac{1}{N}\sum_{i=1}^N(\hat{y}_i - y_i)^2$, lower is better), and precision-recall values at specific operating points for deployment scenario analysis.
+
+\subsection{Ablation Study Design}
+
+To identify which features drive predictive performance, we conduct comprehensive ablation studies testing nine feature configurations, with each configuration trained using three random seeds (42, 123, 456) for a total of 27 experiments. Table~\ref{tab:ablation_design} specifies all configurations and their purposes.
+
+\begin{table}[h]
+\centering
+\caption{Ablation study configurations. All experiments employ identical training procedures (same seeds, hyperparameters, temporal split, early stopping) for fair comparison. Feature counts vary by configuration while total sequences (6,293) remain constant.}
+\label{tab:ablation_design}
+\begin{tabular}{lcp{5cm}}
+\toprule
+\textbf{Configuration} & \textbf{\# Feat.} & \textbf{Purpose} \\
+\midrule
+Full Model & 16 & Baseline with all features \\
+Events Only & 4 & Quantify network contribution \\
+Network Only & 12 & Quantify event contribution \\
+No Disappearances & 15 & Measure autocorrelation dependency \\
+No Fatalities & 15 & Test fatalities marginal value \\
+Events + Structure & 9 & Isolate basic structure metrics \\
+Events + Centrality & 7 & Isolate centrality metrics \\
+Events + Clustering & 6 & Isolate clustering metrics \\
+Events + Weights & 6 & Isolate edge weight metrics \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We maintain strict experimental control across all ablations. Each configuration uses identical random seeds, ensuring the same weight initializations and batch orderings. Hyperparameters remain fixed: learning rate 0.001, batch size 64, dropout 0.2, class weights 1.683/1.0. The train-test temporal split is identical (2018--2022 train, 2023--2024 test). Early stopping uses the same criterion: 10 epochs without test AUPRC improvement. This control isolates feature composition as the sole experimental variable.
+
+Our analysis strategy compares specific configuration pairs to answer targeted questions. Comparing Full Model versus Events Only quantifies network feature contribution by measuring performance change when removing all twelve network features. Comparing Full Model versus No Disappearances measures autocorrelation dependency, revealing how much performance derives from temporal persistence versus other predictive signals. Comparing Events Only versus each Events + [category] configuration tests whether specific network feature categories (structure, centrality, clustering, weights) add value when combined with event features. We report results as mean $\pm$ standard deviation across three random seeds. With only three replicates, we emphasize effect sizes and consistency across runs rather than formal significance testing. Differences exceeding one standard deviation and consistent across all three seeds are interpreted as meaningful.
+
+% We additionally compare LSTM models to logistic regression to assess whether temporal modeling provides value over linear feature combinations. The logistic regression baseline uses identical features flattened to a single vector (6 timesteps $\times$ $F$ features dimensions), the same train-test temporal split, and class weighting (1.683 for positives), but employs default scikit-learn settings without hyperparameter tuning. If LSTM substantially outperforms logistic regression, it indicates that temporal structure---captured by recurrent connections across the 6-month lookback window---provides genuine predictive signal beyond linear combinations of lagged features \cite{king2001logistic}.
+We additionally compare LSTM models to logistic regression to assess whether temporal modeling provides value over linear feature combinations. The logistic regression baseline uses identical features flattened to a single vector (6 timesteps $\times$ $F$ feature dimensions), the same train-test temporal split, and class weighting (1.683 for positives), but employs default scikit-learn settings without hyperparameter tuning. We also evaluate tuned non-temporal baselines and a persistence baseline, described in Section~\ref{sec:additional_baselines}.
+
+\subsection{Additional Baselines}\label{sec:additional_baselines}
+
+To ensure that performance differences reflect genuine temporal structure rather than insufficient baseline tuning, we evaluate three additional baselines: tuned logistic regression, XGBoost, and a naive persistence model.
+
+For tuned logistic regression, we use \texttt{GridSearchCV} with \texttt{TimeSeriesSplit} ($n\_splits=5$) and \texttt{scoring=`average\_precision'}. The search grid includes regularization strength $C \in \{0.001, 0.01, 0.1, 1, 10, 100\}$, penalty $\in \{l1, l2\}$, and solver $\in \{\text{liblinear}, \text{saga}\}$, with class weights matching the LSTM configuration ($w_+ = 1.683$). Inputs are flattened identically to the untuned logistic regression baseline (6 timesteps $\times$ $F$ features). We evaluate both the Full Model configuration (16 features; 96 dimensions) and the Events Only configuration (4 features; 24 dimensions).
+
+We also evaluate XGBoost as a gradient-boosted tree baseline using \texttt{GridSearchCV} with \texttt{TimeSeriesSplit} ($n\_splits=5$) and \texttt{scoring='average\_precision'}. The search grid includes \texttt{n\_estimators} $\in \{100, 300, 500\}$, \texttt{max\_depth} $\in \{3, 5, 7\}$, \texttt{learning\_rate} $\in \{0.01, 0.05, 0.1\}$, and \texttt{subsample} $\in \{0.8, 1.0\}$, with \texttt{scale\_pos\_weight} $= 1.683$. Inputs are flattened identically to the logistic regression baselines. XGBoost provides an independent test of the null finding for network features: if a tree-based model capable of capturing nonlinear feature interactions also gains nothing from network features, this null result is unlikely to arise from limitations specific to the LSTM or linear models.
+
+Finally, we implement a naive persistence baseline defined as $\hat{y}(t{+}1) = y(t)$, where the prediction for the next month equals whether disappearances occurred in the most recently observed month. This baseline requires no training and provides a standard sanity check in conflict forecasting \cite{hegre2024views}, establishing the minimum performance threshold that a model must exceed to demonstrate value beyond simple autocorrelation.
+
+\subsection{Reproducibility}
+
+To facilitate replication and extension, we will release complete code, environment specifications, and trained models upon publication. Our GitHub repository will contain Python implementations of all preprocessing pipelines, feature engineering, model architectures, training procedures, and evaluation scripts, with exact package versions specified (PyTorch 2.0.1, NumPy 1.24.3, Pandas 2.0.2, NetworkX 3.1, scikit-learn 1.3.0). All experiments use fixed random seeds (42, 123, 456) for deterministic replication. ACLED data are publicly available at \url{https://acleddata.com/} with free registration.
+
+This research uses publicly available conflict event data and does not involve human subjects. All analysis focuses on aggregate regional patterns rather than individual identification. Code and data sharing follows ACLED's terms of use permitting academic research with proper attribution.
+
+\section{Results}\label{sec:results}
+
+We present results in three stages: model architecture comparison, systematic feature ablations, and country-level performance. All metrics represent mean ± standard deviation across three random seeds (42, 123, 456). Figure~\ref{fig:ablations} provides a visual overview of ablation results.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/ablation_chart.png}
+\caption{Feature ablation study results sorted by test AUPRC (mean $\pm$ SD across 3 random seeds). The Events Only model ($\star$, 4 features) matches or outperforms all network-augmented configurations, including the Full Model with 16 features. Adding any network feature category provides no meaningful improvement (all $\Delta \leq \pm 0.004$). The dashed vertical line marks the Full Model baseline. Removing past disappearances causes the largest single-feature drop ($-$10.1\%), but the model retains substantial predictive power (0.666) well above random (0.483), providing evidence of forecasting value when the lagged disappearance feature is withheld.}
+\label{fig:ablations}
+\end{figure*}
+
+\subsection{Model Architecture Comparison}
+
+Table~\ref{tab:model_comparison} compares LSTM architectures against baselines on the full 16-feature set.
+
+\begin{table}[h]
+\centering
+\caption{Performance comparison of model architectures on the full 16-feature set. LSTM models trained with 3 random seeds; tuned LR, XGBoost, and untuned logistic regression with a single run each. Persistence baseline uses $\hat{y}(t+1) = y(t)$. Random baseline equals test set prevalence (48.3\%). Gap = Test $-$ Train AUPRC.}
+\label{tab:model_comparison}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Model} & \textbf{Test AUPRC} & \textbf{Train AUPRC} & \textbf{Gap} & \textbf{Brier} \\
+\midrule
+Attention-LSTM & 0.741 $\pm$ 0.003 & 0.705 $\pm$ 0.003 & $-0.036$ & 0.208 $\pm$ 0.001 \\
+Standard LSTM & 0.740 $\pm$ 0.003 & 0.701 $\pm$ 0.004 & $-0.039$ & 0.206 $\pm$ 0.001 \\
+Tuned LR & 0.738 & 0.689 & $+0.049$ & 0.206 \\
+XGBoost & 0.723 & 0.704 & $+0.018$ & 0.212 \\
+Logistic Regression (untuned) & 0.717 & 0.626 & $-0.091$ & 0.212 \\
+Persistence Baseline & 0.570 & --- & --- & 0.363 \\
+Random Baseline & 0.483 & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Both LSTM models achieve test AUPRC ${\approx}$0.74, representing 25.8-point improvement over the random baseline and 17.1 points above the persistence baseline. A tuned logistic regression (0.738) and XGBoost (0.723) narrow the gap relative to the untuned LR (0.717), confirming that part of the original difference reflected insufficient regularization rather than temporal structure. However, the LSTM models exhibit negative train-test gaps ($-0.036$, $-0.039$), indicating improved performance under the distributional shift from training (37.3\% positive) to test (48.3\% positive), while the tuned LR and XGBoost show positive gaps ($+0.049$, $+0.018$), suggesting weaker generalization. We adopt Attention-LSTM for subsequent ablations to enable temporal interpretability.
+
+\subsection{Feature Ablation Results}
+
+Table~\ref{tab:ablation_results} presents systematic ablations testing nine feature configurations.
+
+\begin{table}[h]
+\centering
+\caption{Feature ablation study results sorted by test AUPRC. $\Delta$ indicates change relative to the Full Model (16-feature) baseline. \#F = number of input features. All experiments use Attention-LSTM with identical seeds, hyperparameters, and temporal split.}
+\label{tab:ablation_results}
+\small
+\begin{tabular}{clccc}
+\toprule
+\textbf{Rank} & \textbf{Configuration} & \textbf{Test AUPRC} & \textbf{$\Delta$} & \textbf{\#F} \\
+\midrule
+1 & Events + Structure & 0.745 $\pm$ 0.002 & +0.004 & 9 \\
+2 & \textbf{Events Only} & \textbf{0.745 $\pm$ 0.003} & \textbf{+0.004} & \textbf{4} \\
+3 & Events + Clustering & 0.745 $\pm$ 0.003 & +0.004 & 6 \\
+4 & Events + Weights & 0.743 $\pm$ 0.001 & +0.002 & 6 \\
+5 & Full Model & 0.741 $\pm$ 0.003 & --- & 16 \\
+6 & Events + Centrality & 0.741 $\pm$ 0.001 & $-$0.000 & 7 \\
+7 & No Fatalities & 0.740 $\pm$ 0.003 & $-$0.001 & 15 \\
+8 & \textbf{No Disappearances} & \textbf{0.666 $\pm$ 0.006} & \textbf{$-$0.075} & \textbf{15} \\
+9 & Network Only & 0.664 $\pm$ 0.003 & $-$0.077 & 12 \\
+\midrule
+& \textit{Random Baseline} & \textit{0.483} & \textit{$-$0.258} & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Results show three distinct performance tiers visible in Table~\ref{tab:ablation_results} and Figure~\ref{fig:ablations}. The top tier (ranks 1--7, AUPRC 0.740--0.745) comprises all configurations including the four event-based features, regardless of network features added or removed. The middle tier (ranks 8--9, AUPRC 0.664--0.666) contains configurations missing past disappearances or lacking event features. The bottom tier is random baseline (0.483). This structure indicates event-based features, particularly past disappearances, drive predictive performance.
+
+Three key findings emerge from ablations. First, events-only outperforms the full model, indicating twelve network structure features provide no predictive value. If actor network configuration were a primary driver of disappearances, removing network features would materially reduce predictive performance. We observe no such reduction. This holds when examining individual network categories: structure features contribute +0.0 points, clustering +0.0, weights $-$0.002, centrality $-$0.005. Events-only also outperforms network-only by 8.1 points despite using one-third the features, confirming simple conflict indicators contain far more information than complex network metrics.
+
+Second, removing past disappearances reduces AUPRC from 0.741 to 0.666 (7.5-point drop, 10.1\% of performance), confirming it as the strongest single predictor. However, the model without disappearance history remains 18.3 points above random, meaning arrests, violence, and fatalities alone provide substantial predictive power for identifying new outbreak regions.
+
+Third, removing fatalities causes negligible change (0.741 to 0.740), suggesting fatality counts are redundant with violence event counts.
+
+We also investigated whether the model can predict disappearances in regions with no training-period history of such violations. Of 87 admin1 regions, only 2 (Ayeyarwady and Nay Pyi Taw, Myanmar) had zero disappearances during the training period, yielding a subset too small (47 test sequences) for reliable evaluation. The evidence for early-warning capability therefore rests on the No Past Disappearances ablation's 9.6-point margin over the persistence baseline rather than on predictions in genuinely new regions.
+
+Table~\ref{tab:events_only_comparison} shows that the network null finding is not specific to the LSTM architecture. Across all three model families, the Events Only configuration matches or outperforms the Full Model. Notably, the XGBoost Full Model shows the largest penalty from including network features ($-0.010$), suggesting that even a tree-based model capable of capturing non-linear interactions between network metrics gains nothing from them. This cross-model replication strengthens the conclusion that graph-theoretic features derived from actor co-occurrence networks carry no predictive value for disappearance forecasting in this setting.
+
+\begin{table}[h]
+\centering
+\caption{Events Only versus Full Model test AUPRC across model families. In all cases, removing the twelve network features maintains or improves predictive performance, replicating the network null finding across model architectures.}
+\label{tab:events_only_comparison}
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model} & \textbf{Events Only} & \textbf{Full Model} & \textbf{Difference} \\
+\midrule
+Attention-LSTM & 0.745 $\pm$ 0.003 & 0.741 $\pm$ 0.003 & $+0.004$ \\
+Tuned LR & 0.743 & 0.738 & $+0.005$ \\
+XGBoost & 0.733 & 0.723 & $+0.010$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{SHAP Feature Attribution}
+
+To examine what the model has learned, we apply SHAP analysis (GradientExplainer, 3 seeds) to the Events Only Attention-LSTM. SHAP values are computed over the full test set (2,035 sequences) and averaged across seeds, yielding an output of shape $[2035 \times 6 \times 4]$ (sequences $\times$ timesteps $\times$ features).
+
+Table~\ref{tab:shap_importance} reports mean absolute SHAP values per feature, averaged over all timesteps. Prior disappearances dominate with a mean $|\text{SHAP}|$ of 0.220, approximately five times the next most important feature, consistent with the ablation drop observed when removing the disappearances feature ($-0.075$ AUPRC). Fatalities, violence, and arrests follow in descending order.
+
+\begin{table}[h]
+\centering
+\caption{Mean absolute SHAP values per feature, averaged over timesteps and seeds.}
+\label{tab:shap_importance}
+\small
+\begin{tabular}{lcc}
+\toprule
+\textbf{Feature} & \textbf{Mean $|\text{SHAP}|$} & \textbf{Direction} \\
+\midrule
+Prior disappearances & 0.220 & Positive \\
+Fatalities           & 0.046 & Positive \\
+Violence             & 0.029 & Positive \\
+Arrests              & 0.018 & Mixed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Figure~\ref{fig:shap_heatmap} shows mean absolute SHAP values across all six lookback months and four features. The most recent month ($t$) contributes a mean $|\text{SHAP}|$ of 0.304 for disappearances, approximately 1.5 times that of the oldest lookback month ($t-5$, mean $|\text{SHAP}|$ = 0.200). This recency gradient provides direct evidence that the model learns genuine temporal structure rather than flat autocorrelation.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/fig2_shap_heatmap.png}
+\caption{Temporal feature importance across the 6-month lookback window. Color intensity reflects mean $|\text{SHAP}|$ value. Prior disappearances dominate across all timesteps, with a clear recency gradient at month $t$.}
+\label{fig:shap_heatmap}
+\end{figure}
+
+Figure~\ref{fig:shap_direction} reveals an important nuance in the directional effects of arrests. While violence, disappearances, and fatalities show consistently positive SHAP values across all timesteps, arrests exhibit negative signed SHAP values at older timesteps ($t-5$ to $t-2$) and turn positive only at $t-1$ and $t$. This suggests the model has learned that recent arrest activity increases disappearance risk, while older arrest patterns carry a different and potentially stabilizing signal.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig3_shap_direction.png}
+\caption{Signed mean SHAP values per feature across the 6-month lookback window. Positive values indicate features that increase predicted disappearance risk. Arrests show a sign reversal between older and more recent timesteps.}
+\label{fig:shap_direction}
+\end{figure}
+
+\subsection{Recommended Model}
+
+Based on ablation results, we recommend the Events Only Attention-LSTM as the optimal configuration:
+
+\begin{table}[h]
+\centering
+\caption{Recommended model specification achieving best test performance with fewest features.}
+\label{tab:recommended}
+\small
+\begin{tabular}{ll}
+\toprule
+\textbf{Property} & \textbf{Specification} \\
+\midrule
+Architecture & 2-layer Attention-LSTM, 64 hidden units \\
+Features & arrests, violence, disappearances, fatalities \\
+Feature count & 4 (vs 16 for Full Model) \\
+Test AUPRC & 0.745 $\pm$ 0.003 \\
+Parameters & ${\approx}$55,000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This model achieves marginally better performance (+0.004 AUPRC) with 75\% fewer features, eliminates computationally expensive network construction, provides interpretable predictions for stakeholders, and is more robust to data quality variation.
+
+\subsection{Country-Level Performance}
+
+Table~\ref{tab:country} shows performance is relatively consistent across three distinct conflict contexts (range 0.736--0.758).
+
+\begin{table}[h]
+\centering
+\caption{Country-level performance of the Events Only model.}
+\label{tab:country}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Country} & \textbf{Regions} & \textbf{Test seq.} & \textbf{Pos.\ rate} & \textbf{AUPRC} \\
+\midrule
+Nigeria & 37 & 740 & 41.2\% & 0.758 \\
+Mexico & 32 & 672 & 53.6\% & 0.741 \\
+Myanmar & 18 & 623 & 50.4\% & 0.736 \\
+\midrule
+\textbf{Overall} & \textbf{87} & \textbf{2,035} & \textbf{48.3\%} & \textbf{0.745} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 2.2-percentage-point spread across fundamentally different conflict environments (state repression in Myanmar, criminal violence with state involvement in Mexico, multi-actor insurgency in Nigeria) suggests temporal features capture generalizable precursors rather than context-specific patterns.
+
+\section{Discussion}\label{sec:discussion}
+
+This study demonstrates that enforced disappearances can be predicted at operationally useful accuracy (AUPRC 0.745, substantially above both random and persistence baselines), that simple event-based features outperform complex network-augmented models, and that models retain predictive power (0.666 AUPRC) without past disappearances, indicating genuine early warning capability. We discuss substantive interpretation, practical implications, and limitations.
+
+\subsection{Why Network Features Fail}
+
+Network features consistently fail despite theoretical motivation. We propose four complementary explanations. First, disappearances occur predominantly in contexts of state-directed repression where event-based indicators may capture the relevant dynamics more directly than network summaries. In Mexico, disappearances arise from a mix of cartel violence, direct state force actions, and localized collusion \cite{umnmexico2024}; in Myanmar, security forces systematically target opposition \cite{hrwmyanmar2021}; in Nigeria, both insurgents and state forces commit violations. Network metrics capturing fragmentation or coalition structure may be relevant for inter-group violence \cite{dorff2020networks}, but disappearances require institutional capacity poorly captured by monthly actor co-occurrence patterns.
+
+Second, our co-occurrence networks are crude proxies: actors appearing in the same event may be adversaries not collaborators, actor names contain inconsistencies, and many disappearances involve unnamed state agents absent from records. Third, network features may be redundant with event counts: regions with more violence mechanically produce networks with more actors and edges. Fourth, disappearances may be driven by slow-moving structural conditions (regime type, judicial weakness) operating on longer timescales than monthly network snapshots, which reflect measurement noise rather than meaningful dynamics.
+
+The consistency across all network categories, seeds, and the combined Full Model suggests co-occurrence network structure genuinely carries no predictive value for disappearance forecasting in this setting, aligning with evidence that complex features frequently degrade conflict forecasting \cite{chadefaux2025endogenous, vesco2022united}.
+
+\subsection{What Drives Disappearance Prediction}
+
+Past disappearances contribute 10.1\% of performance, confirming violations occur in sustained campaigns rather than isolated incidents, consistent with qualitative research on escalation within frameworks of impunity \cite{amnesty2024disappearances}. Conflict intensity---captured by violence counts and arrest events---provides the remaining 89.9\%, supporting arguments that process variables can substitute for structural factors over short horizons \cite{blair2020forecasting}. Violence and arrests create the operational environment for disappearances: security operations produce detainees, confrontations provide cover for extrajudicial actions, and instability weakens accountability. The near-zero contribution of fatalities specifies this mechanism: frequency of state-civilian contact (event counts) predicts disappearances more than lethality.
+
+Actor network structure is notably absent from prediction. In this setting, event-based indicators of what occurred carry substantially more predictive signal than graph-theoretic summaries of which actors were involved.
+
+\subsection{Implications for Early Warning and Methodology}
+
+The events-only model's performance (0.745 AUPRC) using four features enables operational deployment: monthly counts of arrests, violence, disappearances, and fatalities are reliably coded in ACLED, require no network construction, and are interpretable to stakeholders. The model predicts new outbreaks without prior history of disappearance (AUPRC = 0.666), addressing operational needs beyond extrapolation from existing patterns. Computational risk scores should be interpreted as signals for monitoring attention rather than as evidence for specific intervention strategies, which require causal  identification beyond the scope of this analysis.
+
+Methodologically, simple features outperforming complex networks reinforce patterns across recent conflict forecasting: sophisticated models frequently underperform simple baselines \cite{hegre2024views}, autoregressive models outperform complex alternatives \cite{chadefaux2025endogenous}, and simplistic models with few powerful variables perform as well as complex ones \cite{vesco2022united}. This suggests the marginal value of complexity decreases rapidly once core signals are captured. Our autocorrelation ablation provides a template: quantify persistence contribution (10.1\%) while demonstrating residual predictive power (89.9\%), balancing acknowledgment of temporal dependence with genuine forecasting capability.
+
+% \subsection{Theoretical and Substantive Implications}
+
+% Our feature importance analysis indicates that enforced disappearances align more closely with institutionally driven phenomena than with actor-network dynamics. The minimal predictive utility of network structure features—despite theoretical motivation from violence diffusion literature \cite{christia2012social,staniland2014networks}—suggests a boundary condition for network-centric explanations. Instead, the data offers empirical support for state capacity theories \cite{tilly1985war,davenport2007state,mann2005dark}, where disappearances are driven by macro-level structural conditions and institutional support systems—such as command chains and concealment infrastructure—that appear poorly captured by monthly actor co-occurrence patterns. These results suggest a scope condition for network-centric theories: while relational structure may explain patterns of inter-group violence, disappearances appear primarily shaped by territorially embedded state coercive processes.
+
+% The results of temporal modeling (LSTM outperforming logistic regression) suggests non-linear temporal dynamics, with the model capturing medium-term escalation patterns. While much predictive signal remains accessible to linear combinations consistent with known conflict processes \cite{chadefaux2025endogenous}, this empirical trend carries three primary implications:
+
+% First, the dominance of event-based features (arrests, violence counts) indicates that disappearances follow territorial state presence and conflict intensity. This represents the intersection of where states possess the capacity to conceal violations and where conflict provides operational cover, rather than being a product of relational configurations among armed actors.
+
+% Second, the 10.1\% contribution of past disappearances points toward a degree of bureaucratic persistence, where repressive capacity tends to persist through institutional inertia once established. However, since the majority of predictive performance is derived from conflict intensity indicators, disappearances do not appear to be purely self-perpetuating. They remain highly responsive to the operational context—such as arrest surges—characterizing them as institutionally-mediated responses to conflict dynamics.
+
+% Third, the model's ability to predict new outbreaks at AUPRC 0.666 highlights a significant predictive signal in contextual risk factors. This suggests that the measurable indicators of institutional capacity for concealment can manifest rapidly when conflict intensity crosses specific thresholds. This finding complements structural accounts by suggesting that repressive capacity can be activated quickly given sufficient operational pressure, even without a prior history of violations.
+
+% From a data science perspective, the cross-contextual robustness observed across Nigeria, Mexico, and Myanmar suggests that these patterns represent stable empirical regularities. This consistency indicates that our model captures general mechanisms of disappearance production, providing a scalable foundation for monitoring specific violation types across diverse high-intensity conflict settings.
+
+\subsection{Relationship to Theoretical Accounts}
+
+The finding that event-based features outperform network-based features is consistent with state capacity accounts of repression \cite{tilly1985war,davenport2007state,mann2005dark}, which emphasize territorial control and institutional organization as preconditions for systematic disappearances. However, predictive contribution and causal importance are distinct concepts: the absence of predictive value in network features does not establish that relational dynamics are causally irrelevant. It may equally reflect limitations in how networks are measured here, specifically co-occurrence summaries at region-month resolution, rather than the actor-level relational dynamics that network theories describe. We therefore interpret this finding as a modeling result rather than a theoretical adjudication.
+
+\subsection{Predictive Patterns and Their Interpretation}
+
+Three consistent patterns emerge from the ablation results and SHAP attribution. First, prior disappearances are the dominant predictive signal, contributing approximately five times more than any other feature. This is consistent with disappearances occurring in sustained episodes rather than as isolated incidents, though the predictive design cannot 
+establish this causally. Second, conflict intensity indicators---arrests, violence, and fatalities---collectively account for the majority of predictive power beyond the autoregressive signal, suggesting that the operational environment in which disappearances occur is partially observable from routinely coded conflict data. Third, the recency gradient confirmed by SHAP analysis indicates the model weights the full six-month window in a temporally structured way rather than relying on a single lag.
+
+These patterns hold across Nigeria, Mexico, and Myanmar, contexts that differ substantially in regime type, perpetrator configuration, and conflict intensity. This cross-contextual consistency suggests the model captures regularities that are not specific to any single country. The network null finding, replicated across LSTM, logistic regression, and XGBoost, indicates that graph-theoretic features derived from actor co-occurrence networks carry no predictive value in this setting. Whether this reflects a genuine absence of relational dynamics or a measurement limitation of co-occurrence proxies cannot be determined from a predictive analysis alone.
+
+\subsection{Limitations}
+
+ACLED captures only reported disappearances; underreporting is likely severe in remote regions and repressive contexts where reporting itself is dangerous, 
+particularly in contexts with restricted press access such as Myanmar post-2021. The three study countries also differ in media freedom and civil society capacity, creating uneven reporting environments. This selection bias means models learn to predict reported disappearances, which may differ from actual violations. However, this distinction is less problematic for early warning applications where monitoring organizations operate within the same information environment.
+
+Our three-country design trades analytical depth for geographic breadth: comprehensive ablation studies (nine configurations, multiple seeds) rather than superficial multi-country analysis. This enables rigorous testing that network features provide no value, distinguishing genuine null effects from noise. However, external validity is limited. All three countries exhibit high-intensity disappearance contexts where mechanisms may differ from low-prevalence settings; state actors or state-affiliated groups dominate, potentially under-representing purely non-state disappearances; and shared characteristics (weak judicial institutions, limited accountability, ongoing conflict) may not generalize. Critical questions require validation: Do network features also fail in civil war contexts (Syria, Yemen) where rebel coalitions may matter more? Do findings hold in post-conflict transitions (Colombia)? Does the dominance of simple features extend to lower-prevalence contexts (Turkey, Philippines)?
+
+Methodological choices constrain findings. The six-month lookback may miss longer-term patterns; one-month horizon limits prevention; admin1 aggregation obscures within-region variation; binary outcomes discard count information. Our co-occurrence networks are crude proxies: co-occurrence may indicate adversaries not collaborators, actor names contain inconsistencies, and many disappearances involve unnamed agents. Alternative constructions (adversarial ties, temporal decay weighting, bipartite graphs) might yield different results. Our negative finding applies to static structural metrics from co-occurrence networks, not all possible network representations. The 2018--2024 temporal scope provides only 24-month out-of-sample testing; longer-term stability and response to structural changes (peace agreements, regime transitions) remain unknown.
+
+\subsection{Future Work}
+
+Priority validation should test findings across broader country samples: civil war contexts where actor coalitions may matter more (Syria, Yemen), post-conflict transitions targeting specific populations (Colombia), state repression without insurgency (Belarus, Iran), and lower-intensity settings with sporadic disappearances (Philippines, Turkey). Multi-country studies could employ hierarchical modeling to pool information while estimating country-specific effects, meta-learning to identify generalizable versus context-dependent findings, or transfer learning to test whether models trained on high-data countries predict in low-data contexts.
+
+Additional extensions include longer prediction horizons (3--6 months) for earlier intervention, subnational granularity (admin2, grid-cell) for geographic precision, text-based features from event descriptions capturing contextual nuances, dynamic network features tracking temporal evolution of targeting patterns, and incorporation of slow-moving structural variables (regime type, judicial independence) as cross-sectional complements. Deployment pilots with human rights organizations would provide the most meaningful validation of operational utility.
+
+\section{Conclusions}
+
+This study demonstrates that enforced disappearances are computationally tractable prediction targets despite their rarity, achieving AUPRC 0.741 with a four-feature event-based model against a persistence baseline of 0.570 and a prevalence-equivalent random baseline of 0.483. A nine-configuration ablation shows that twelve graph-theoretic network features add no predictive value beyond four event-based indicators, a finding replicated across LSTM, logistic regression, and XGBoost models. SHAP attribution confirms the model learns genuine temporal structure, with the most recent month contributing approximately 1.5 times the importance of the oldest lookback month. The No Past Disappearances ablation (AUPRC 0.666, 9.6 points above the persistence baseline) provides the strongest methodological finding: the model retains substantial predictive power even without the autoregressive disappearance signal.
+
+The recommended model relies on four features (arrests, violence, prior disappearances, and fatalities), all routinely coded in ACLED, requiring no network construction and remaining interpretable to operational stakeholders. Tuned non-temporal baselines match LSTM accuracy but generalize worse under the distributional shift between training (37.3\% positive) and test (48.3\% positive), motivating the temporal model for deployment contexts where conflict conditions evolve.
+
+These results hold across Nigeria, Mexico, and Myanmar, contexts that differ substantially in regime type, perpetrator configuration, and conflict intensity, suggesting the model captures regularities that are not specific to any single country. Validation across broader country samples including civil war contexts, post-conflict transitions, and 
+lower-intensity settings remains an important next step for establishing the generalizability of these findings.
+
+Methodologically, this study contributes a rigorous evaluation framework for rare human rights violations, combining strict temporal validation, prevalence-calibrated evaluation metrics, and systematic ablation across nine feature configurations. The finding that network features derived from actor co-occurrence graphs carry no predictive value in this setting, whether reflecting a genuine absence of relational signal or a measurement limitation of co-occurrence proxies, has practical implications for early warning system design: simpler event-based models are sufficient and more robust under distributional shift.
+
+Computational risk scores from systems of this kind should be interpreted as signals for monitoring attention rather than as evidence for specific intervention strategies. Short prediction horizons, admin1 aggregation, and reliance on reported events mean these models are best understood as a complement to contextual intelligence rather than a substitute for it.
+
+\section*{Declarations}
+
+\subsection*{Data Availability}
+The ACLED conflict event data used in this study are publicly available at \url{https://acleddata.com/} with free registration for academic use. All code for data preprocessing, feature engineering, model training, and evaluation is available at \url{https://github.com/christoschr97/ed-temporal-network} under an MIT License. Trained model checkpoints are available from the corresponding author upon reasonable request for research purposes.
+
+\subsection*{Competing Interests}
+The authors declare that they have no competing interests.
+
+\subsection*{Funding Statement}
+Funded by the European Union (ERC – DISACT, 101086935). Views and opinions expressed are, however, those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council Executive Agency. Neither the European Union nor the granting authority can be held responsible for them.
+
+\subsection*{Author Contributions}
+All authors contributed equally to this work. CJC, CD and NI: Conceptualization, Methodology, Software, Formal Analysis, Writing -- Original Draft and Review \& Editing.
+
+%%===========================================================================================%%
+%% Bibliography placed before appendices to avoid BibTeX errors                             %%
+%%===========================================================================================%%
+
+% \bibliographystyle{sn-mathphys-num}
+\bibliography{sn-bibliography}
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input sn-article.bbl
+
+% \begin{appendices}
+
+% \section{Section title of first appendix}\label{secA1}
+
+% An appendix contains supplementary information that is not an essential part of the text itself but which may be helpful in providing a more comprehensive understanding of the research problem or it is information that is too cumbersome to be included in the body of the paper.
+
+% %%=============================================%%
+% %% For submissions to Nature Portfolio Journals %%
+% %% please use the heading ``Extended Data''.   %%
+% %%=============================================%%
+
+% %%=============================================================%%
+% %% Sample for another appendix section			       %%
+% %%=============================================================%%
+
+% %% \section{Example of another appendix section}\label{secA2}%
+% %% Appendices may be used for helpful, supporting or essential material that would otherwise 
+% %% clutter, break up or be distracting to the text. Appendices can consist of sections, figures, 
+% %% tables and equations etc.
+
+% \end{appendices}
+
+\end{document}

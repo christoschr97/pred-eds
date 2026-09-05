@@ -1,0 +1,223 @@
+% Detailed Explanation of Rare Events Challenges
+% This document provides background on the scientific literature supporting our claims
+% You can incorporate these explanations into your paper or supplementary materials
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{Understanding Rare Events in Machine Learning: \\
+A Literature Review for Conflict Prediction}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Why Rare Events Are Fundamentally Difficult}
+
+\subsection{The Statistical Challenge}
+
+King and Zeng (2001) provide the foundational analysis of rare events in statistical modeling. They demonstrate that when events occur with probability $p < 0.05$, standard maximum likelihood estimation produces systematically biased parameter estimates. Specifically:
+
+\begin{equation}
+\hat{\beta}_{MLE} \approx \beta - \frac{(1-2p)}{np}\beta
+\end{equation}
+
+where $n$ is sample size, $p$ is event probability, and $\beta$ is the true parameter. With our 2.9\% prevalence:
+\begin{itemize}
+    \item The bias term is negative and substantial
+    \item Predicted probabilities underestimate true risk
+    \item Standard errors are incorrect
+    \item Confidence intervals don't achieve nominal coverage
+\end{itemize}
+
+This isn't just a theoretical concern---it has practical implications. A model predicting 1\% probability when true risk is 3\% leads to systematic under-allocation of monitoring resources.
+
+\subsection{The Algorithmic Challenge}
+
+He and Garcia (2009) survey why machine learning algorithms fail on imbalanced data:
+
+\textbf{Decision Boundary Bias:} Most learning algorithms optimize overall accuracy or minimize average loss. With 97.1\% negative cases, the global optimum is to predict ``negative'' for everything, achieving 97.1\% accuracy while detecting zero disappearances.
+
+\textbf{Small Disjuncts Problem:} Rare positive cases often form small clusters (``disjuncts'') in feature space. Decision tree algorithms, for example, may ignore these small regions because splitting on them doesn't improve overall accuracy metrics. Japkowicz and Stephen (2002) show this effect becomes severe when:
+\begin{itemize}
+    \item Imbalance ratio exceeds 1:10 (ours is 1:33)
+    \item Dataset size is limited relative to feature dimensionality
+    \item Positive class is fragmented into multiple subconcepts
+\end{itemize}
+
+\textbf{Representation Learning:} Deep learning models learn representations optimized for the majority class. With limited positive examples, the model may fail to learn discriminative features for disappearances, instead memorizing a few specific patterns without generalizing.
+
+\subsection{The Data Scarcity Challenge}
+
+Weiss (2004) introduces the concept of ``absolute rarity'' vs. ``relative rarity'':
+\begin{itemize}
+    \item \textbf{Relative rarity:} Class imbalance (2.9\% positive)
+    \item \textbf{Absolute rarity:} Limited positive examples (5,959 total)
+\end{itemize}
+
+Our dataset exhibits both. Even with 202,347 total events, we have only 5,959 positive cases distributed across:
+\begin{itemize}
+    \item 87 regions
+    \item 7 years
+    \item 3 countries with different conflict dynamics
+\end{itemize}
+
+This yields approximately 68 positive cases per region over 7 years, or ~10 per year per region. This sparse distribution limits the model's ability to learn region-specific or context-specific patterns.
+
+\subsection{The Evaluation Challenge}
+
+Saito and Rehmsmeier (2015) demonstrate why standard metrics fail for imbalanced data:
+
+\textbf{Accuracy Paradox:}
+\begin{equation}
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+\end{equation}
+
+With 97.1\% negatives, TN dominates the numerator. A trivial classifier predicting all negatives achieves:
+\begin{equation}
+\text{Accuracy}_{\text{trivial}} = \frac{0 + 197,388}{0 + 197,388 + 0 + 5,959} = 0.971
+\end{equation}
+
+This 97.1\% accuracy is useless for early warning.
+
+\textbf{ROC-AUC Optimism:}
+ROC curves plot True Positive Rate vs. False Positive Rate:
+\begin{equation}
+TPR = \frac{TP}{TP + FN}, \quad FPR = \frac{FP}{FP + TN}
+\end{equation}
+
+With large TN (197,388 negatives), FPR remains low even with many false positives. A model with 1,000 false positives has:
+\begin{equation}
+FPR = \frac{1,000}{1,000 + 197,388} \approx 0.005
+\end{equation}
+
+This looks excellent on ROC curve but means 1,000 false alarms per month---operationally unacceptable.
+
+\textbf{Precision-Recall Superiority:}
+Precision-recall focuses on positive predictions:
+\begin{equation}
+\text{Precision} = \frac{TP}{TP + FP}, \quad \text{Recall} = \frac{TP}{TP + FN}
+\end{equation}
+
+Neither denominator includes TN, so metrics aren't inflated by majority class size. This provides realistic assessment of operational utility.
+
+\subsection{The Calibration Challenge}
+
+Dal Pozzolo et al. (2015) show that class-imbalanced training produces miscalibrated probabilities. Models trained with undersampling or class weights don't output well-calibrated probabilities:
+
+\begin{itemize}
+    \item Predicted $p = 0.5$ may correspond to true probability $\neq 0.5$
+    \item Threshold selection becomes critical
+    \item Post-hoc calibration (Platt scaling, isotonic regression) needed
+\end{itemize}
+
+For early warning systems, calibration matters because stakeholders need to know: ``Does a 70\% predicted probability actually mean 70\% chance of disappearance?''
+
+\section{Rare Events in Conflict Prediction}
+
+\subsection{The Civil War Parallel}
+
+Muchlinski et al. (2016) face similar challenges predicting civil war onset:
+\begin{itemize}
+    \item 1.8\% prevalence (vs. our 2.9\%)
+    \item Country-year panel data (similar structure to our region-month)
+    \item Need for operational early warning (same goal)
+\end{itemize}
+
+Their findings:
+\begin{itemize}
+    \item Random forests outperform logistic regression by handling imbalance better
+    \item Feature engineering crucial with limited positive cases
+    \item Ensemble methods provide robustness
+\end{itemize}
+
+\subsection{Fundamental Limits}
+
+Blair and Sambanis (2020) provide sobering analysis of prediction limits. With rare events:
+
+\textbf{Base Rate Fallacy:} Even with 90\% sensitivity and 90\% specificity:
+\begin{align}
+PPV &= \frac{\text{sensitivity} \times \text{prevalence}}{\text{sensitivity} \times \text{prevalence} + (1-\text{specificity})(1-\text{prevalence})} \\
+    &= \frac{0.9 \times 0.029}{0.9 \times 0.029 + 0.1 \times 0.971} \\
+    &= \frac{0.0261}{0.0261 + 0.0971} = 0.212
+\end{align}
+
+Only 21.2\% of positive predictions are correct! This is inherent to low prevalence, not a model flaw.
+
+\textbf{The Warning-Fatigue Trade-off:}
+\begin{itemize}
+    \item High sensitivity (detect most disappearances) → Many false alarms → Warning fatigue
+    \item High precision (few false alarms) → Miss many disappearances → Failed prevention
+\end{itemize}
+
+No model can simultaneously achieve high sensitivity and high precision with 2.9\% prevalence.
+
+\subsection{Methodological Implications}
+
+Ward et al. (2010) emphasize:
+\begin{enumerate}
+    \item \textbf{Out-of-sample validation mandatory:} In-sample fit misleading with rare events
+    \item \textbf{Temporal validation critical:} Must test on future periods
+    \item \textbf{Policy-relevant metrics:} Focus on precision-recall at operational thresholds
+    \item \textbf{Honest reporting:} Acknowledge fundamental trade-offs
+\end{enumerate}
+
+Statistical significance of predictors doesn't guarantee predictive accuracy. A coefficient significant at $p < 0.001$ may contribute negligibly to out-of-sample prediction.
+
+\section{Temporal Modeling for Rare Events}
+
+\subsection{LSTM Advantages}
+
+Malhotra et al. (2015) demonstrate LSTM benefits for rare anomaly detection:
+
+\textbf{Sequential Context:} Rather than treating observations independently, LSTMs learn:
+\begin{itemize}
+    \item Escalation patterns: violence increasing over months
+    \item Temporal dependencies: arrests followed by disappearances
+    \item Seasonal patterns: certain months higher risk
+\end{itemize}
+
+\textbf{Memory Mechanism:} Hidden states carry information across time:
+\begin{equation}
+h_t = \text{LSTM}(x_t, h_{t-1})
+\end{equation}
+
+This allows models to remember distant precursors that precede rare events.
+
+\textbf{Attention Mechanism:} Can identify which months in lookback window matter most:
+\begin{equation}
+\text{context} = \sum_{i=1}^{T} \alpha_i h_i
+\end{equation}
+
+where attention weights $\alpha_i$ reveal temporal importance.
+
+\subsection{Temporal Modeling Challenges}
+
+Schubert et al. (2019) identify issues:
+\begin{itemize}
+    \item \textbf{Sequence length selection:} Too short misses precursors; too long dilutes signal
+    \item \textbf{Insufficient temporal positives:} Need positive sequences, not just positive events
+    \item \textbf{Distribution shift:} Temporal patterns may change over time
+\end{itemize}
+
+Our 6-month window balances these concerns but remains a modeling choice requiring validation.
+
+\section{Summary: What Makes 2.9\% Prevalence Hard}
+
+\begin{enumerate}
+    \item \textbf{Statistical bias:} MLE estimates biased, predicted probabilities too low
+    \item \textbf{Algorithmic bias:} Classifiers optimize for majority class
+    \item \textbf{Data scarcity:} Only 68 positives per region over 7 years
+    \item \textbf{Evaluation misleading:} Accuracy and AUROC overly optimistic
+    \item \textbf{Calibration problems:} Predicted probabilities unreliable without correction
+    \item \textbf{Fundamental limits:} Even good models produce many false positives
+    \item \textbf{Temporal complexity:} Need sequential positives, not just positive events
+\end{enumerate}
+
+These challenges are well-documented in machine learning and conflict forecasting literature. Our study acknowledges these difficulties upfront and employs best practices (temporal validation, AUPRC metrics, class weighting, ablation studies) to provide realistic assessment of what's achievable for this rare but critical violation.
+
+\end{document}

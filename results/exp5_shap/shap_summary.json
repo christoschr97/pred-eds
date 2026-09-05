@@ -1,0 +1,63 @@
+{
+  "experiment": "Exp5 \u2014 SHAP Feature Attribution",
+  "model": "Events Only Attention-LSTM",
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "n_test_sequences": 2035,
+  "background_samples": 100,
+  "feature_importance": {
+    "arrests": 0.017556,
+    "violence": 0.028487,
+    "disappearances": 0.219509,
+    "fatalities": 0.046425
+  },
+  "timestep_importance": {
+    "t-5": 0.061637,
+    "t-4": 0.066805,
+    "t-3": 0.070128,
+    "t-2": 0.075409,
+    "t-1": 0.07292,
+    "t": 0.121065
+  },
+  "shap_mean_abs_per_timestep_feature": {
+    "t-5": {
+      "arrests": 0.015887,
+      "violence": 0.017976,
+      "disappearances": 0.199864,
+      "fatalities": 0.012823
+    },
+    "t-4": {
+      "arrests": 0.015208,
+      "violence": 0.023408,
+      "disappearances": 0.208415,
+      "fatalities": 0.020191
+    },
+    "t-3": {
+      "arrests": 0.015282,
+      "violence": 0.026631,
+      "disappearances": 0.209134,
+      "fatalities": 0.029464
+    },
+    "t-2": {
+      "arrests": 0.014018,
+      "violence": 0.029671,
+      "disappearances": 0.210648,
+      "fatalities": 0.047301
+    },
+    "t-1": {
+      "arrests": 0.018904,
+      "violence": 0.032098,
+      "disappearances": 0.184781,
+      "fatalities": 0.055896
+    },
+    "t": {
+      "arrests": 0.026039,
+      "violence": 0.041136,
+      "disappearances": 0.304212,
+      "fatalities": 0.112874
+    }
+  }
+}
