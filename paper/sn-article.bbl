@@ -1,6 +1,6 @@
 %% BioMed_Central_Bib_Style_v1.01
 
-\begin{thebibliography}{55}
+\begin{thebibliography}{57}
 % BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1}\fi
@@ -44,6 +44,32 @@
 \csname PreBibitemsHook\endcsname
 
 %%% 1
+\bibitem[\protect\citeauthoryear{{United Nations General
+  Assembly}}{2006}]{icpped2006}
+\begin{botherref}
+\oauthor{\bsnm{{United Nations General Assembly}}}:
+International Convention for the Protection of All Persons from Enforced
+  Disappearance.
+UN Doc. A/RES/61/177.
+Adopted 20 December 2006, entered into force 23 December 2010
+(2006).
+\url{https://www.ohchr.org/en/instruments-mechanisms/instruments/international-convention-protection-all-persons-enforced}
+\end{botherref}
+\endbibitem
+
+%%% 2
+\bibitem[\protect\citeauthoryear{{United Nations General
+  Assembly}}{1992}]{unga1992disappearance}
+\begin{botherref}
+\oauthor{\bsnm{{United Nations General Assembly}}}:
+Declaration on the Protection of All Persons from Enforced Disappearance.
+Resolution 47/133, adopted 18 December 1992
+(1992).
+\url{https://www.ohchr.org/en/instruments-mechanisms/instruments/declaration-protection-all-persons-enforced-disappearance}
+\end{botherref}
+\endbibitem
+
+%%% 3
 \bibitem[\protect\citeauthoryear{Christia}{2012}]{christia2012social}
 \begin{bbook}
 \bauthor{\bsnm{Christia}, \binits{F.}}:
@@ -54,7 +80,7 @@
 \end{bbook}
 \endbibitem
 
-%%% 2
+%%% 4
 \bibitem[\protect\citeauthoryear{Staniland}{2014}]{staniland2014networks}
 \begin{bbook}
 \bauthor{\bsnm{Staniland}, \binits{P.}}:
@@ -65,7 +91,7 @@
 \end{bbook}
 \endbibitem
 
-%%% 3
+%%% 5
 \bibitem[\protect\citeauthoryear{Tilly}{1985}]{tilly1985war}
 \begin{bchapter}
 \bauthor{\bsnm{Tilly}, \binits{C.}}:
@@ -81,7 +107,7 @@ pp. \bfpage{169}--\blpage{191}.
 \end{bchapter}
 \endbibitem
 
-%%% 4
+%%% 6
 \bibitem[\protect\citeauthoryear{Davenport}{2007}]{davenport2007state}
 \begin{bbook}
 \bauthor{\bsnm{Davenport}, \binits{C.}}:
@@ -92,7 +118,7 @@ pp. \bfpage{169}--\blpage{191}.
 \end{bbook}
 \endbibitem
 
-%%% 5
+%%% 7
 \bibitem[\protect\citeauthoryear{Mann}{2005}]{mann2005dark}
 \begin{bbook}
 \bauthor{\bsnm{Mann}, \binits{M.}}:
@@ -103,7 +129,7 @@ pp. \bfpage{169}--\blpage{191}.
 \end{bbook}
 \endbibitem
 
-%%% 6
+%%% 8
 \bibitem[\protect\citeauthoryear{Salganik et~al.}{2020}]{salganik2020measuring}
 \begin{barticle}
 \bauthor{\bsnm{Salganik}, \binits{M.J.}},
@@ -125,7 +151,7 @@ pp. \bfpage{169}--\blpage{191}.
 \end{barticle}
 \endbibitem
 
-%%% 7
+%%% 9
 \bibitem[\protect\citeauthoryear{Hofman et~al.}{2021}]{hofman2021integrating}
 \begin{barticle}
 \bauthor{\bsnm{Hofman}, \binits{J.M.}},
@@ -145,32 +171,6 @@ pp. \bfpage{169}--\blpage{191}.
 \bfpage{181}--\blpage{188}
 (\byear{2021})
 \end{barticle}
-\endbibitem
-
-%%% 8
-\bibitem[\protect\citeauthoryear{{United Nations General
-  Assembly}}{2006}]{icpped2006}
-\begin{botherref}
-\oauthor{\bsnm{{United Nations General Assembly}}}:
-International Convention for the Protection of All Persons from Enforced
-  Disappearance.
-UN Doc. A/RES/61/177.
-Adopted 20 December 2006, entered into force 23 December 2010
-(2006).
-\url{https://www.ohchr.org/en/instruments-mechanisms/instruments/international-convention-protection-all-persons-enforced}
-\end{botherref}
-\endbibitem
-
-%%% 9
-\bibitem[\protect\citeauthoryear{{United Nations General
-  Assembly}}{1992}]{unga1992disappearance}
-\begin{botherref}
-\oauthor{\bsnm{{United Nations General Assembly}}}:
-Declaration on the Protection of All Persons from Enforced Disappearance.
-Resolution 47/133, adopted 18 December 1992
-(1992).
-\url{https://www.ohchr.org/en/instruments-mechanisms/instruments/declaration-protection-all-persons-enforced-disappearance}
-\end{botherref}
 \endbibitem
 
 %%% 10
@@ -769,6 +769,21 @@ Uppsala University
 \endbibitem
 
 %%% 51
+\bibitem[\protect\citeauthoryear{Oswald}{2026}]{oswald2026googletrends}
+\begin{barticle}
+\bauthor{\bsnm{Oswald}, \binits{C.}}:
+\batitle{I still haven't found what i'm looking for: Predicting
+  security-related incidents and conflict fatalities with google trends and
+  wikipedia data}.
+\bjtitle{Journal of Conflict Resolution}
+\bvolume{70}(\bissue{2-3}),
+\bfpage{499}--\blpage{524}
+(\byear{2026})
+\doiurl{10.1177/00220027251362832}
+\end{barticle}
+\endbibitem
+
+%%% 52
 \bibitem[\protect\citeauthoryear{Hagberg et~al.}{2007}]{hagberg2007exploring}
 \begin{botherref}
 \oauthor{\bsnm{Hagberg}, \binits{A.}},
@@ -781,7 +796,7 @@ Los Alamos National Laboratory (LANL)
 \end{botherref}
 \endbibitem
 
-%%% 52
+%%% 53
 \bibitem[\protect\citeauthoryear{Freeman}{1978}]{freeman1978centrality}
 \begin{barticle}
 \bauthor{\bsnm{Freeman}, \binits{L.C.}}:
@@ -793,7 +808,7 @@ Los Alamos National Laboratory (LANL)
 \end{barticle}
 \endbibitem
 
-%%% 53
+%%% 54
 \bibitem[\protect\citeauthoryear{LeCun et~al.}{2012}]{lecun2012efficient}
 \begin{bchapter}
 \bauthor{\bsnm{LeCun}, \binits{Y.A.}},
@@ -809,7 +824,7 @@ pp. \bfpage{9}--\blpage{48}.
 \end{bchapter}
 \endbibitem
 
-%%% 54
+%%% 55
 \bibitem[\protect\citeauthoryear{Kingma and Ba}{2014}]{kingma2015adam}
 \begin{botherref}
 \oauthor{\bsnm{Kingma}, \binits{D.P.}},
@@ -820,7 +835,7 @@ arXiv preprint arXiv:1412.6980
 \end{botherref}
 \endbibitem
 
-%%% 55
+%%% 56
 \bibitem[\protect\citeauthoryear{Srivastava
   et~al.}{2014}]{srivastava2014dropout}
 \begin{barticle}
@@ -834,6 +849,26 @@ arXiv preprint arXiv:1412.6980
 \bvolume{15}(\bissue{1}),
 \bfpage{1929}--\blpage{1958}
 (\byear{2014})
+\end{barticle}
+\endbibitem
+
+%%% 57
+\bibitem[\protect\citeauthoryear{Correndo et~al.}{2022}]{correndo2022metrica}
+\begin{barticle}
+\bauthor{\bsnm{Correndo}, \binits{A.A.}},
+\bauthor{\bsnm{Moro~Rosso}, \binits{L.H.}},
+\bauthor{\bsnm{Hernandez}, \binits{C.H.}},
+\bauthor{\bsnm{Bastos}, \binits{L.M.}},
+\bauthor{\bsnm{Nieto}, \binits{L.}},
+\bauthor{\bsnm{Holzworth}, \binits{D.}},
+\bauthor{\bsnm{Ciampitti}, \binits{I.A.}}:
+\batitle{metrica: an {R} package to evaluate prediction performance of
+  regression and classification point-forecast models}.
+\bjtitle{Journal of Open Source Software}
+\bvolume{7}(\bissue{79}),
+\bfpage{4655}
+(\byear{2022})
+\doiurl{10.21105/joss.04655}
 \end{barticle}
 \endbibitem
 

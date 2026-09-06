@@ -1,0 +1,49 @@
+{
+  "experiment": "Exp6 \u2014 Supplementary Poisson Regression on Monthly Counts",
+  "description": "PoissonRegressor (sklearn, L2-penalized GLM, log link) with GridSearchCV (TimeSeriesSplit n=5, scoring=neg_mean_poisson_deviance). Flattened 6-month window input, identical construction to exp1. Target: raw disappearance count in the target region-month (paper's classifier uses the binarized >0 threshold of this same quantity). Same temporal split as paper (train<=2022-12, test>=2023-01).",
+  "sanity_check_binary_match_rate": 1.0,
+  "param_grid": {
+    "alpha": [
+      0.001,
+      0.01,
+      0.1,
+      1,
+      10,
+      100
+    ]
+  },
+  "results": [
+    {
+      "feature_set": "Full Model (16 feat, 96-dim flattened)",
+      "best_params": {
+        "alpha": 100
+      },
+      "cv_deviance": 1.895,
+      "test_mae": 1.2588,
+      "test_rmse": 2.4495,
+      "test_deviance": 2.7409,
+      "test_mcfadden_r2": 0.1234,
+      "test_lins_ccc": 0.1432,
+      "train_mae": 0.8857,
+      "train_deviance": 1.649,
+      "train_mcfadden_r2": 0.0697,
+      "tuning_seconds": 0.5
+    },
+    {
+      "feature_set": "Events Only (4 feat, 24-dim flattened)",
+      "best_params": {
+        "alpha": 10
+      },
+      "cv_deviance": 1.7482,
+      "test_mae": 1.2419,
+      "test_rmse": 2.4218,
+      "test_deviance": 2.4542,
+      "test_mcfadden_r2": 0.1864,
+      "test_lins_ccc": 0.2405,
+      "train_mae": 0.8587,
+      "train_deviance": 1.5373,
+      "train_mcfadden_r2": 0.1104,
+      "tuning_seconds": 0.2
+    }
+  ]
+}

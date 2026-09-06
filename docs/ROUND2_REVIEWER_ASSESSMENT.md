@@ -126,7 +126,7 @@ guesses this wouldn't be a large computational lift; based on the pipeline's act
 runtime (full 27-run ablation sweep completes in minutes on CPU), that part is likely
 true, but re-collecting and re-validating a new, larger raw dataset is the real cost, not
 the training compute. **Recommend:** respond that data collection was fixed at the point
-the underlying dataset (HuRiViRe) was assembled, and treat any extension as future work
+the ACLED extract was assembled, and treat any extension as future work
 rather than a same-round rerun, unless the co-authors want to commit to it.
 
 **H. Predict counts/regression instead of (or in addition to) binary classification, with a proper regression metric suite.**
@@ -167,7 +167,7 @@ than running new architecture comparisons.
 1. Reviewer 2's fixes and most of Reviewer 3's framing fixes (A, B, C, E, F, I) look
    straightforward to implement this round — propose drafting the text changes directly.
 2. Reviewer 3's data-scope requests (G) look like future-work material given the
-   HuRiViRe collection was already fixed at a point in time — agree on wording for the
+   ACLED extract was already fixed at a point in time — agree on wording for the
    response letter here.
 3. Reviewer 3's regression-task request (H) is the one item that could change the
    paper's scope. Decide: appendix-only supplementary regression baseline, or a written
