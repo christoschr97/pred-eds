@@ -34,6 +34,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from data_prep import (
+    DATA_FILE,
     load_acled_data,
     create_monthly_aggregation_with_networks,
     create_temporal_sequences,
@@ -49,7 +50,7 @@ import shap
 DATA_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "data",
-    "ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv",
+    DATA_FILE,
 )
 
 SEQUENCE_LENGTH  = 6

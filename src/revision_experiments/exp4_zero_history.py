@@ -27,6 +27,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))          # public
 sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # lstm_new_features/
 
 from data_prep import (
+    DATA_FILE,
     load_acled_data,
     create_monthly_aggregation_with_networks,
     temporal_split,
@@ -42,7 +43,7 @@ import torch
 DATA_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "data",
-    "ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv",
+    DATA_FILE,
 )
 
 SEQUENCE_LENGTH = 6

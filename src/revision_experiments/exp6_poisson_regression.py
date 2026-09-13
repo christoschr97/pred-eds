@@ -53,6 +53,7 @@ import pandas as pd
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from data_prep import (
+    DATA_FILE,
     load_acled_data,
     create_monthly_aggregation_with_networks,
     create_temporal_sequences,
@@ -69,7 +70,7 @@ from scipy.stats import poisson as poisson_dist
 DATA_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "data",
-    "ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv",
+    DATA_FILE,
 )
 
 SEQUENCE_LENGTH = 6
@@ -111,30 +112,30 @@ def select_features(X: np.ndarray, feature_names: list, subset: list) -> np.ndar
 
 def build_count_lookup(df: pd.DataFrame) -> dict:
     """
-    (country, admin1, month) -> disappearance count of the NEXT
-    chronologically-OBSERVED month for that region.
+    (country, admin1, month) -> disappearance count IN that month.
 
-    This mirrors data_prep.py's own target construction exactly: monthly
-    aggregation there only creates rows for (region, month) combinations
-    with at least one recorded event, so a region's aggregated timeline
-    can have calendar gaps (a month with zero total events is simply
-    absent, not a zero-row) -- shift(-1) within that timeline therefore
-    advances to the next *observed* row, not necessarily next calendar
-    month. A naive "target_month + 1" calendar lookup was tried first and
-    produced 20 mismatches against the paper's own binary target on this
-    dataset; matching the row-shift semantics used below reduces that to
-    zero.
+    Keyed on the month itself, with no shift. The lookup is queried with a
+    sequence's `target_month`, and in data_prep.py that field already names
+    the month the binary label refers to: the aggregation's 'target' column
+    is shifted forward one row at construction, so row j of `targets` holds
+    the outcome for row j+1, and create_temporal_sequences pairs
+    targets[i+sequence_length-1] with months[i+sequence_length]. Label and
+    target_month therefore denote the same month, and the count for that
+    month is read directly.
 
-    A second quirk is reproduced deliberately, not fixed: for the single
-    last-observed month per region, the true future count is undefined,
-    and data_prep.py's `(shifted > 0).astype(float)` silently maps that
-    NaN to 0.0 (NaN > 0 evaluates to False in pandas) rather than
-    dropping the row via its subsequent dropna(subset=['target']) call --
-    so those rows are not actually excluded from the paper's classifier.
-    We keep the identical convention here (unmatched keys default to a
-    count of 0) so the regression target is defined on exactly the same
-    row set, with exactly the same treatment of undefined-future rows,
-    as the published binary classifier.
+    Applying shift(-1) here as well would advance one further row and put
+    the count target a month ahead of the binary target. The sanity check
+    in main() catches exactly that: it compares (count > 0) against the
+    classifier's own label and aborts below a 99.9% match rate.
+
+    Region timelines can have calendar gaps -- monthly aggregation only
+    creates rows for (region, month) combinations with at least one
+    recorded event, so a month with zero total events is absent rather
+    than a zero-row. Gaps are harmless under direct keying: every
+    target_month comes from an aggregated row, and that row is present in
+    the grouping below by construction. Unmatched keys default to a count
+    of 0 in counts_for_sequences, which cannot arise for target months
+    drawn from the same aggregation.
     """
     monthly_counts = (
         df.groupby(["country", "admin1", df["event_date"].dt.to_period("M")])
@@ -144,13 +145,9 @@ def build_count_lookup(df: pd.DataFrame) -> dict:
         .rename(columns={"event_date": "month"})
         .sort_values(["country", "admin1", "month"])
     )
-    monthly_counts["target_count"] = (
-        monthly_counts.groupby(["country", "admin1"])["disappearances"].shift(-1)
-    )
-    valid = monthly_counts.dropna(subset=["target_count"])
     return {
-        (row.country, row.admin1, row.month): row.target_count
-        for row in valid.itertuples(index=False)
+        (row.country, row.admin1, row.month): row.disappearances
+        for row in monthly_counts.itertuples(index=False)
     }
 
 
@@ -162,9 +159,9 @@ def counts_for_sequences(
 ) -> np.ndarray:
     """
     Map each sequence's (region, target_month) to its count-level target.
-    Keyed directly on target_month (the row whose binary 'target' the
-    paper's classifier predicts) since count_lookup already encodes the
-    shift-to-next-observed-row semantics; see build_count_lookup.
+    Keyed directly on target_month, the month the paper's classifier
+    label refers to; count_lookup holds that month's own count with no
+    further shift. See build_count_lookup.
     """
     counts = np.zeros(len(region_ids), dtype=float)
     for i, (rid, tmonth) in enumerate(zip(region_ids, month_targets)):

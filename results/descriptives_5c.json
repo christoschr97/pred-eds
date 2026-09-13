@@ -1,0 +1,39 @@
+{
+  "countries": [
+    "Afghanistan",
+    "Mexico",
+    "Myanmar",
+    "Nigeria",
+    "Syria"
+  ],
+  "n_countries": 5,
+  "n_admin1": 135,
+  "admin1_by_country": {
+    "Nigeria": 37,
+    "Afghanistan": 34,
+    "Mexico": 32,
+    "Myanmar": 18,
+    "Syria": 14
+  },
+  "total_events": 360530,
+  "n_disappearances": 11483,
+  "pct_disappearances": 3.19,
+  "n_arrests": 8371,
+  "n_violence_flagged": 252808,
+  "total_fatalities": 438917,
+  "violent_events_by_type": {
+    "Explosions/Remote violence": 91348,
+    "Battles": 86694,
+    "Violence against civilians": 74766
+  },
+  "violent_events_total": 252808,
+  "date_min": "2018-01-31",
+  "date_max": "2024-12-31",
+  "disappearances_by_country": {
+    "Syria": 4841,
+    "Nigeria": 2899,
+    "Myanmar": 1744,
+    "Mexico": 1472,
+    "Afghanistan": 527
+  }
+}

@@ -16,6 +16,49 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
+# ---------------------------------------------------------------------------
+# Dataset scope
+# ---------------------------------------------------------------------------
+# Five-country export (Nigeria, Mexico, Myanmar, Afghanistan, Syria),
+# 2018-01-31 to 2024-12-31. Scripts build their default path as
+# os.path.join(<repo>, 'data', DATA_FILE).
+DATA_FILE = ('ACLED Data_2026-09-06_event_date_from_2018-01-31_'
+             'event_date_to_2024-12-31_Mexico_Myanmar_Nigeria_'
+             'afghanistan_Syrian_Taiwan.csv')
+
+# Three-country export used for the originally submitted tables. Retained so
+# the submitted numbers stay reproducible.
+DATA_FILE_3C = 'ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv'
+
+# Two separate exclusion rules, kept apart because they rest on different
+# grounds and are justified separately in the paper's methods section.
+#
+# (1) ACLED assigns events at sea to maritime areas rather than to a country.
+#     These are not administrative units: they have no resident population and
+#     no admin1 geography, so the region-month unit of analysis is undefined
+#     for them. 149 events across the export.
+EXCLUDE_MARITIME = ['Atlantic Ocean', 'Indian Ocean',
+                    'Mediterranean Sea', 'Pacific Ocean']
+
+# (2) Outside the sampling frame. The study population is countries with
+#     documented enforced-disappearance activity over the study window; the
+#     original three-country design applied the same criterion. Taiwan entered
+#     the export as an artifact of the ACLED pull, not as a design choice: it
+#     records 6,190 events across 21 admin1 units and all 84 months, of which
+#     6,093 are protests and 0 are abduction/forced disappearance.
+#
+#     Its inclusion is not metric-neutral, and the direction matters for the
+#     write-up. Adding 21 all-negative regions (1,006 sequences) leaves AUPRC
+#     unchanged (0.8088 -> 0.8081) but lifts AUROC by 3.1 points
+#     (0.8174 -> 0.8483) and widens the margin over persistence by 1.4 points
+#     (0.2122 -> 0.2262), purely by supplying easy negatives. Figures are for
+#     the full 16-feature model; the events-only model moves the same way.
+#     Excluding Taiwan therefore lowers our reported numbers.
+EXCLUDE_OUT_OF_FRAME = ['Taiwan']
+
+EXCLUDE_COUNTRIES = EXCLUDE_MARITIME + EXCLUDE_OUT_OF_FRAME
+
+
 def load_acled_data(filepath: str, start_date: str = '2018-01-01') -> pd.DataFrame:
     """
     Load and preprocess ACLED data.
@@ -31,6 +74,13 @@ def load_acled_data(filepath: str, start_date: str = '2018-01-01') -> pd.DataFra
     df = pd.read_csv(filepath)
     df['event_date'] = pd.to_datetime(df['event_date'])
     df = df[df['event_date'] >= start_date]
+
+    # Drop maritime pseudo-countries and zero-disappearance countries
+    dropped = df['country'].isin(EXCLUDE_COUNTRIES)
+    if dropped.any():
+        print(f"  Excluded {dropped.sum():,} events from "
+              f"{sorted(df.loc[dropped, 'country'].unique())}")
+        df = df[~dropped]
 
     # Create indicators
     df['is_disappearance'] = (df['sub_event_type'] == 'Abduction/forced disappearance').astype(int)
@@ -317,8 +367,13 @@ def create_temporal_sequences(
             # Input: months i to i+sequence_length-1
             X_seq = features[i:i+sequence_length]
 
-            # Target: month i+sequence_length
-            y_target = targets[i+sequence_length]
+            # Target: month i+sequence_length.
+            # NOTE: the 'target' column is already shifted forward one month at
+            # construction (see create_monthly_aggregation_with_networks), so
+            # row j of `targets` holds the outcome for month j+1. Indexing at
+            # i+sequence_length would therefore label the window with month
+            # i+sequence_length+1, i.e. t+2 rather than the intended t+1.
+            y_target = targets[i+sequence_length-1]
             target_month = months[i+sequence_length]
 
             sequences_X.append(X_seq)

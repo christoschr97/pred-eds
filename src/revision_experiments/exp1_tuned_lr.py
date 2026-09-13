@@ -8,7 +8,8 @@ Setup:
 - Input: 6-month lookback window FLATTENED to a single vector
   (same as existing LR: 6 timesteps × F features)
 - Same temporal train/test split as paper (train ≤ 2022-12, test ≥ 2023-01)
-- Same class weighting: {0: 1.0, 1: 1.683}
+- Same class weighting rule as paper §3.6: w+ = (1 - p) / p, recomputed
+  from the training split (1.683 on the three-country sample, 2.213 on five)
 - GridSearchCV with TimeSeriesSplit(n_splits=5), scoring=average_precision
 - Grid: C=[0.001,0.01,0.1,1,10,100], penalty=[l1,l2], solver=[liblinear,saga]
 
@@ -29,6 +30,7 @@ import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from data_prep import (
+    DATA_FILE,
     load_acled_data,
     create_monthly_aggregation_with_networks,
     create_temporal_sequences,
@@ -44,7 +46,7 @@ from sklearn.metrics import average_precision_score, roc_auc_score, brier_score_
 DATA_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "data",
-    "ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv",
+    DATA_FILE,
 )
 
 SEQUENCE_LENGTH = 6
@@ -118,7 +120,7 @@ def run_tuned_lr(
         param_grid=PARAM_GRID,
         cv=tscv,
         scoring="average_precision",
-        n_jobs=-1,
+        n_jobs=1,  # n_jobs=-1 hits a joblib/loky semaphore permission error
         verbose=1,
         refit=True,
     )
@@ -190,6 +192,15 @@ def main():
     # normalise — fit on train only
     X_train_norm, X_test_norm, _ = normalize_sequences(X_train_raw, X_test_raw)
 
+    # Class weight follows paper §3.6: w+ = (1 - p) / p on the TRAINING split.
+    # The literal 1.683 above was p = 0.373, the three-country training
+    # prevalence. On any other sample that constant is wrong, so recompute it
+    # here from y_train — this is what run_ablations.py and exp4/exp5/exp7 do.
+    global CLASS_WEIGHT
+    CLASS_WEIGHT = {0: 1.0, 1: float((1 - y_train.mean()) / y_train.mean())}
+    print(f"Class weight w+ = {CLASS_WEIGHT[1]:.3f} "
+          f"(training prevalence {y_train.mean()*100:.1f}%)")
+
     results = []
 
     # ── A: Full Model (16 features) ────────────────────────────────────────────
@@ -254,7 +265,9 @@ def main():
         "experiment": "Exp1 — Tuned Logistic Regression Baseline",
         "description": (
             "LogisticRegression with GridSearchCV (TimeSeriesSplit n=5). "
-            "Flattened 6-month window input. class_weight={0:1.0, 1:1.683}. "
+            "Flattened 6-month window input. "
+            f"class_weight={{0:1.0, 1:{CLASS_WEIGHT[1]:.3f}}} recomputed from "
+            "the training split. "
             "Same temporal split as paper (train≤2022-12, test≥2023-01)."
         ),
         "param_grid": PARAM_GRID,

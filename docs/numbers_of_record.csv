@@ -1,0 +1,184 @@
+section,quantity,value,source
+Sample,Countries,5,src/data_prep.py DATA_FILE
+Sample,Admin1 regions,135,results/logs/run_ablations.log
+Sample,Months of data coverage,84,results/logs/run_ablations.log
+Sample,Months spanned by sequences,78,results/logs/run_ablations.log
+Sample,Total sequences,9696,results/logs/run_ablations.log
+Sample,Overall positive rate,0.358,results/logs/run_ablations.log
+Sample,Train sequences,6660,results/logs/run_ablations.log
+Sample,Train positive rate,0.311,results/logs/run_ablations.log
+Sample,Train month range,2018-07 to 2022-12,results/logs/run_ablations.log
+Sample,Test sequences,3036,results/logs/run_ablations.log
+Sample,Test positive rate,0.459,results/logs/run_ablations.log
+Sample,Test month range,2023-01 to 2024-12,results/logs/run_ablations.log
+Sample,Split cutoff month,2023-01,results/logs/run_ablations.log
+Sample,Positive class weight,2.213,results/logs/run_ablations.log
+Baseline,Persistence test AUPRC,0.5967,results/exp3_persistence.json
+Baseline,Persistence test AUROC,0.6905,results/exp3_persistence.json
+Baseline,Persistence Brier,0.3073,results/exp3_persistence.json
+Attention-LSTM,Full model (16 feat) test AUPRC,0.8088 ± 0.0006,results/ablations_5c.json
+Attention-LSTM,Events only (4 feat) test AUPRC,0.8140 ± 0.0003,results/ablations_5c.json
+Attention-LSTM,Network only (12 feat) test AUPRC,0.6930 ± 0.0048,results/ablations_5c.json
+Attention-LSTM,No past disappearances (15 feat) test AUPRC,0.7225 ± 0.0033,results/ablations_5c.json
+Attention-LSTM,No fatalities (15 feat) test AUPRC,0.8080 ± 0.0010,results/ablations_5c.json
+Network categories,Events + Structure Features test AUPRC,0.8130 ± 0.0009,results/ablations_5c.json
+Network categories,Events + Centrality Features test AUPRC,0.8126 ± 0.0008,results/ablations_5c.json
+Network categories,Events + Clustering Features test AUPRC,0.8130 ± 0.0004,results/ablations_5c.json
+Network categories,Events + Weight Features test AUPRC,0.8118 ± 0.0010,results/ablations_5c.json
+Derived,Network contribution (events only - full),0.0052,results/ablations_5c.json
+Derived,Past-disappearance dependency (full - no past disapp.),0.0863,results/ablations_5c.json
+Derived,Events minus network only,0.121,results/ablations_5c.json
+Derived,Best model margin over persistence,0.2173,results/ablations_5c.json + exp3
+Derived,Full model margin over persistence,0.2121,results/ablations_5c.json + exp3
+Derived,Network category spread (max - min),0.0012,results/ablations_5c.json
+Tuned LR,Full (16 feat) test AUPRC,0.8109,results/exp1_tuned_lr.json
+XGBoost,Full (16 feat) test AUPRC,0.7920,results/exp2_gbm.json
+Tuned LR,Events only (4 feat) test AUPRC,0.8115,results/exp1_tuned_lr.json
+XGBoost,Events only (4 feat) test AUPRC,0.8054,results/exp2_gbm.json
+LSTM vs LR,LSTM mean AUPRC (3 seeds),0.8088,results/exp7_bootstrap_lr_vs_lstm.json
+LSTM vs LR,LSTM ensemble AUPRC (3 seeds averaged),0.8099,results/exp7_bootstrap_lr_vs_lstm.json
+LSTM vs LR,Tuned LR AUPRC,0.8109,results/exp7_bootstrap_lr_vs_lstm.json
+LSTM vs LR,Observed difference (LSTM ensemble - LR),-0.00097,results/exp7_bootstrap_lr_vs_lstm.json
+LSTM vs LR,95% bootstrap CI,"[-0.00649, 0.00455]",results/exp7_bootstrap_lr_vs_lstm.json
+LSTM vs LR,Permutation two-sided p,0.8047,results/exp7_bootstrap_lr_vs_lstm.json
+SHAP (events-only model),Mean |SHAP| arrests,0.020529,results/exp5_shap/shap_summary.json
+SHAP (events-only model),Mean |SHAP| violence,0.017302,results/exp5_shap/shap_summary.json
+SHAP (events-only model),Mean |SHAP| disappearances,0.312505,results/exp5_shap/shap_summary.json
+SHAP (events-only model),Mean |SHAP| fatalities,0.016249,results/exp5_shap/shap_summary.json
+SHAP (events-only model),Disappearances / next feature ratio,15.2,results/exp5_shap/shap_summary.json
+SHAP (events-only model),Highest-weight timestep,t (0.133322),results/exp5_shap/shap_summary.json
+Zero-history subset,Zero-history regions,8 of 135,results/exp4_zero_history_subset.json
+Zero-history subset,Test sequences in subset,160,results/exp4_zero_history_subset.json
+Zero-history subset,Subset positive rate = random baseline,0.175,results/exp4_zero_history_subset.json
+Zero-history subset,Subset AUPRC,0.1387 ± 0.0100,results/exp4_zero_history_subset.json
+Zero-history subset,"Same model, full test set",0.7191 ± 0.0101,results/exp4_zero_history_subset.json
+Poisson appendix,Full (16 feat) test MAE,1.7752,results/exp6_poisson_regression.json
+Poisson appendix,Full (16 feat) test RMSE,7.4121,results/exp6_poisson_regression.json
+Poisson appendix,Full (16 feat) test Poisson deviance,2.8915,results/exp6_poisson_regression.json
+Poisson appendix,Full (16 feat) test McFadden R2,0.3615,results/exp6_poisson_regression.json
+Poisson appendix,Full (16 feat) test Lin's CCC,0.4636,results/exp6_poisson_regression.json
+Poisson appendix,Events only (4 feat) test MAE,1.686,results/exp6_poisson_regression.json
+Poisson appendix,Events only (4 feat) test RMSE,6.4769,results/exp6_poisson_regression.json
+Poisson appendix,Events only (4 feat) test Poisson deviance,2.9018,results/exp6_poisson_regression.json
+Poisson appendix,Events only (4 feat) test McFadden R2,0.3599,results/exp6_poisson_regression.json
+Poisson appendix,Events only (4 feat) test Lin's CCC,0.4695,results/exp6_poisson_regression.json
+Poisson appendix,Count-vs-binary target match rate,1.0,results/exp6_poisson_regression.json
+Table 4 — Attention-LSTM,Table 4 test AUPRC,0.8081,results/exp8_architecture_comparison.json
+Table 4 — Attention-LSTM,Table 4 train AUPRC,0.7642,results/exp8_architecture_comparison.json
+Table 4 — Attention-LSTM,Table 4 gap (train - test),-0.0439,results/exp8_architecture_comparison.json
+Table 4 — Attention-LSTM,Table 4 test Brier,0.1860,results/exp8_architecture_comparison.json
+Table 4 — Standard LSTM,Table 4 test AUPRC,0.8089,results/exp8_architecture_comparison.json
+Table 4 — Standard LSTM,Table 4 train AUPRC,0.7584,results/exp8_architecture_comparison.json
+Table 4 — Standard LSTM,Table 4 gap (train - test),-0.0505,results/exp8_architecture_comparison.json
+Table 4 — Standard LSTM,Table 4 test Brier,0.1805,results/exp8_architecture_comparison.json
+Table 4 — Tuned LR,Table 4 test AUPRC,0.8109,results/exp1_tuned_lr.json
+Table 4 — Tuned LR,Table 4 train AUPRC,0.7362,results/exp1_tuned_lr.json
+Table 4 — Tuned LR,Table 4 gap (train - test),-0.0747,results/exp1_tuned_lr.json
+Table 4 — Tuned LR,Table 4 test Brier,0.1818,results/exp1_tuned_lr.json
+Table 4 — XGBoost,Table 4 test AUPRC,0.7920,results/exp2_gbm.json
+Table 4 — XGBoost,Table 4 train AUPRC,0.7415,results/exp2_gbm.json
+Table 4 — XGBoost,Table 4 gap (train - test),-0.0505,results/exp2_gbm.json
+Table 4 — XGBoost,Table 4 test Brier,0.1948,results/exp2_gbm.json
+Table 4 — LR untuned,Table 4 test AUPRC,0.8094,results/exp8_architecture_comparison.json
+Table 4 — LR untuned,Table 4 train AUPRC,0.7380,results/exp8_architecture_comparison.json
+Table 4 — LR untuned,Table 4 gap (train - test),-0.0714,results/exp8_architecture_comparison.json
+Table 4 — LR untuned,Table 4 test Brier,0.1829,results/exp8_architecture_comparison.json
+Table 8 — Afghanistan,Regions,34,results/exp9_country_breakdown.json
+Table 8 — Afghanistan,Test sequences,674,results/exp9_country_breakdown.json
+Table 8 — Afghanistan,Test positive rate,0.232,results/exp9_country_breakdown.json
+Table 8 — Afghanistan,Test AUPRC,0.5712 ± 0.0004,results/exp9_country_breakdown.json
+Table 8 — Afghanistan,Lift over own prevalence,+0.340,results/exp9_country_breakdown.json
+Table 8 — Mexico,Regions,32,results/exp9_country_breakdown.json
+Table 8 — Mexico,Test sequences,757,results/exp9_country_breakdown.json
+Table 8 — Mexico,Test positive rate,0.362,results/exp9_country_breakdown.json
+Table 8 — Mexico,Test AUPRC,0.5954 ± 0.0016,results/exp9_country_breakdown.json
+Table 8 — Mexico,Lift over own prevalence,+0.233,results/exp9_country_breakdown.json
+Table 8 — Myanmar,Regions,18,results/exp9_country_breakdown.json
+Table 8 — Myanmar,Test sequences,419,results/exp9_country_breakdown.json
+Table 8 — Myanmar,Test positive rate,0.637,results/exp9_country_breakdown.json
+Table 8 — Myanmar,Test AUPRC,0.8935 ± 0.0009,results/exp9_country_breakdown.json
+Table 8 — Myanmar,Lift over own prevalence,+0.256,results/exp9_country_breakdown.json
+Table 8 — Nigeria,Regions,37,results/exp9_country_breakdown.json
+Table 8 — Nigeria,Test sequences,861,results/exp9_country_breakdown.json
+Table 8 — Nigeria,Test positive rate,0.571,results/exp9_country_breakdown.json
+Table 8 — Nigeria,Test AUPRC,0.8040 ± 0.0002,results/exp9_country_breakdown.json
+Table 8 — Nigeria,Lift over own prevalence,+0.233,results/exp9_country_breakdown.json
+Table 8 — Syria,Regions,14,results/exp9_country_breakdown.json
+Table 8 — Syria,Test sequences,325,results/exp9_country_breakdown.json
+Table 8 — Syria,Test positive rate,0.634,results/exp9_country_breakdown.json
+Table 8 — Syria,Test AUPRC,0.9599 ± 0.0002,results/exp9_country_breakdown.json
+Table 8 — Syria,Lift over own prevalence,+0.326,results/exp9_country_breakdown.json
+Table 8 — Overall,Regions,135,results/exp9_country_breakdown.json
+Table 8 — Overall,Test sequences,3036,results/exp9_country_breakdown.json
+Table 8 — Overall,Test positive rate,0.460,results/exp9_country_breakdown.json
+Table 8 — Overall,Test AUPRC,0.8144 ± 0.0000,results/exp9_country_breakdown.json
+Table 8 — Overall,Lift over own prevalence,+0.355,results/exp9_country_breakdown.json
+Table 8 — spread,Raw AUPRC spread across countries,0.3887,results/exp9_country_breakdown.json
+Table 8 — spread,Max within-country seed SD,0.0016,results/exp9_country_breakdown.json
+Table 8 — spread,Lift spread across countries,0.1071,results/exp9_country_breakdown.json
+Derived,Train-to-test prevalence jump (pp),14.8,results/logs/run_ablations.log
+Poisson appendix,Test count range,0 to 47,results/test_count_distribution_5c.json
+Poisson appendix,Test count mean (s.d.),1.69 (4.20),results/test_count_distribution_5c.json
+Poisson appendix,Test region-months at zero,54.1%,results/test_count_distribution_5c.json
+SHAP (events-only model),Recency ratio t / t-5,1.68,results/exp5_shap/shap_summary.json
+"LSTM vs LR (events-only, exp10)",Attention-LSTM seed mean,0.8140 ± 0.0003,results/exp10_bootstrap_events_only.json
+"LSTM vs LR (events-only, exp10)",Attention-LSTM ensemble AUPRC,0.8143,results/exp10_bootstrap_events_only.json
+"LSTM vs LR (events-only, exp10)",Tuned LR AUPRC,0.8115,results/exp10_bootstrap_events_only.json
+"LSTM vs LR (events-only, exp10)",Difference (ensemble - LR),+0.0028,results/exp10_bootstrap_events_only.json
+"LSTM vs LR (events-only, exp10)",Difference (seed mean - LR),+0.0025,results/exp10_bootstrap_events_only.json
+"LSTM vs LR (events-only, exp10)",Bootstrap 95% CI,"[-0.0002, +0.0059]",results/exp10_bootstrap_events_only.json
+"LSTM vs LR (events-only, exp10)",Bootstrap P(diff <= 0),0.0366,results/exp10_bootstrap_events_only.json
+"LSTM vs LR (events-only, exp10)",Permutation two-sided p,0.4444,results/exp10_bootstrap_events_only.json
+"LSTM vs LR (events-only, exp10)",Test sequences,3036,results/exp10_bootstrap_events_only.json
+Spatial unit,Admin1 units,135,data/ACLED extract (5 countries)
+Spatial unit,Admin2 units,3044,data/ACLED extract (5 countries)
+Spatial unit,Admin1 median events/unit-month,14,data/ACLED extract (5 countries)
+Spatial unit,Admin2 median events/unit-month,2,data/ACLED extract (5 countries)
+Spatial unit,Admin1 share of unit-months <5 events,24.8%,data/ACLED extract (5 countries)
+Spatial unit,Admin2 share of unit-months <5 events,76.1%,data/ACLED extract (5 countries)
+Spatial unit,Admin1 observed of possible region-months,10506 of 11340,data/ACLED extract (5 countries)
+Spatial unit,Admin2 observed unit-months,61753 of 255696,data/ACLED extract (5 countries)
+Table 4,Tuned LR test AUPRC (16 feat),0.811,exp1_tuned_lr.json — leads Table 4; was 0.738
+Table 4,Standard LSTM test AUPRC (16 feat),0.809 +- 0.001,exp8_architecture_comparison.json — was 0.740
+Table 4,Untuned LR test AUPRC (16 feat),0.809,exp8_architecture_comparison.json — was 0.717
+Table 4,Attention-LSTM test AUPRC (16 feat),0.808 +- 0.002,exp8_architecture_comparison.json — was 0.741
+Table 4,XGBoost test AUPRC (16 feat),0.792,exp2_gbm.json — was 0.723
+Table 4,Persistence test AUPRC,0.597,exp3_persistence.json — was 0.570
+Table 4,Gap convention,train - test,exp8 note — submitted table mixed two conventions; all gaps negative
+Table 5,Events Only test AUPRC,0.814 +- 0.000,ablations_5c.json — rank 1; was 0.745
+Table 5,Full Model test AUPRC,0.809 +- 0.001,ablations_5c.json — was 0.741
+Table 5,No Disappearances test AUPRC,0.723 +- 0.003,ablations_5c.json — was 0.666
+Table 5,Network Only test AUPRC,0.693 +- 0.005,ablations_5c.json — was 0.664
+Table 5,Random baseline (test prevalence),0.459,exp8 sample.test_positive_rate — was 0.483
+Sample,Train / test sequences,"6,660 / 3,036","exp8_architecture_comparison.json — was 4,258 / 2,035"
+Sample,Train / test positive rate,31.1% / 46.0%,exp8_architecture_comparison.json — was 37.3% / 48.3%
+Zero history,Regions with no training disappearance,8 of 135,exp4_zero_history_subset.json — was 2 of 87
+Zero history,Test sequences / positive rate,160 / 17.5%,exp4_zero_history_subset.json — subset now evaluable
+Zero history,AUPRC on subset vs no-skill,0.139 +- 0.010 vs 0.175,exp4_zero_history_subset.json — at or below chance
+exp7,"LSTM - LR, 16 feat","-0.001, CI [-0.006, +0.005], p=0.805",exp7_bootstrap_lr_vs_lstm.json — n=3036; file description string still says n=2035
+exp10,"LSTM - LR, events only","+0.003, CI [-0.000, +0.006], p=0.444",exp10_bootstrap_events_only.json — CI includes zero
+Feature attribution,"Mean |SHAP|, prior disappearances",0.313,results/exp5_shap/shap_summary.json
+Feature attribution,"Mean |SHAP|, arrests",0.021,results/exp5_shap/shap_summary.json
+Feature attribution,"Mean |SHAP|, violence",0.017,results/exp5_shap/shap_summary.json
+Feature attribution,"Mean |SHAP|, fatalities",0.016,results/exp5_shap/shap_summary.json
+Feature attribution,"Dominance ratio, disappearances / next largest",15.2x,"results/exp5_shap/shap_summary.json — derived, 0.312505/0.020529"
+Feature attribution,Mean |SHAP| disappearances at t,0.439,results/exp5_shap/shap_summary.json — shap_mean_abs_per_timestep_feature
+Feature attribution,Mean |SHAP| disappearances at t-5,0.270,results/exp5_shap/shap_summary.json — shap_mean_abs_per_timestep_feature
+Feature attribution,"Recency ratio, t / t-5 (disappearances)",1.6x,"results/exp5_shap/shap_summary.json — derived, 0.438696/0.270454"
+Feature attribution,"Timestep importance, t-5 -> t (min at t-3)","0.079, 0.074, 0.072, 0.081, 0.111, 0.133",results/exp5_shap/shap_summary.json — timestep_importance
+Feature contribution,Full model gain over random baseline (AUPRC),0.349,"results/ablations_5c.json — derived, 0.8088-0.4595"
+Feature contribution,Gain lost when lagged feature withheld,0.086,"results/ablations_5c.json — derived, 0.8088-0.7225"
+Feature contribution,Share of gain from lagged disappearances,24.7%,results/ablations_5c.json — derived; replaces the invalid 10.1% share of raw AUPRC
+Feature contribution,Share of gain from arrests/violence/fatalities,75.3%,results/ablations_5c.json — derived; replaces the invalid 89.9% share of raw AUPRC
+Sample,"Disappearance events, Syria / Nigeria / Myanmar / Mexico / Afghanistan","4,841 / 2,899 / 1,744 / 1,472 / 527",results/descriptives_5c.json — disappearances_by_country
+Sample,admin1 units by country (N/AF/MX/MM/SY),37 / 34 / 32 / 18 / 14,results/descriptives_5c.json — admin1_by_country
+Sampling frame,Maritime pseudo-entities excluded (events),149,src/data_prep.py — EXCLUDE_MARITIME
+Sampling frame,Taiwan excluded: events / admin1 / protests / disappearances,"6,190 / 21 / 6,093 / 0",src/data_prep.py — EXCLUDE_OUT_OF_FRAME
+Sampling frame,Effect of retaining Taiwan on AUPRC,0.8081 vs 0.8088,src/data_prep.py — documented in constant
+Sampling frame,Effect of retaining Taiwan on AUROC,0.8483 vs 0.8174,src/data_prep.py — documented in constant
+Poisson (Full),MAE / RMSE / deviance / McFadden R2 / CCC,1.775 / 7.412 / 2.892 / 0.362 / 0.464,results/exp6_poisson_regression.json — results[0]
+Poisson (Events),MAE / RMSE / deviance / McFadden R2 / CCC,1.686 / 6.477 / 2.902 / 0.360 / 0.470,results/exp6_poisson_regression.json — results[1]
+Poisson,Test count range / mean / s.d. / pct zero / n,"0-47 / 1.69 / 4.20 / 54.1% / 3,036",results/test_count_distribution_5c.json
+Syria concentration,Share of disappearance events,42.2%,"results/descriptives_5c.json — derived, 4841/11483"
+Syria concentration,Share of test sequences,10.7%,"results/exp9_country_breakdown.json — derived, 325/3036"
+Syria concentration,Share of admin1 regions,10.4%,"results/descriptives_5c.json — derived, 14/135"
