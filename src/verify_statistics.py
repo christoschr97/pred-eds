@@ -16,6 +16,7 @@ Paper Claims to Verify:
 
 import pandas as pd
 import numpy as np
+import sys
 from pathlib import Path
 from sklearn.metrics import average_precision_score
 
@@ -25,10 +26,13 @@ print("=" * 80)
 print()
 
 # Load the data - try multiple possible paths
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from data_prep import DATA_FILE
+
 possible_paths = [
-    Path("../data/ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv"),
-    Path("data/ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv"),
-    Path("/Users/christoschristodoulou/projects/DISACT-GNN/data/ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv"),
+    Path("../data") / DATA_FILE,
+    Path("data") / DATA_FILE,
+    Path(__file__).resolve().parent.parent / "data" / DATA_FILE,
 ]
 
 data_path = None

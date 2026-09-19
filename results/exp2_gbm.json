@@ -31,29 +31,29 @@
         "n_estimators": 100,
         "subsample": 0.8
       },
-      "cv_auprc": 0.6482,
-      "train_auprc": 0.7042,
-      "test_auprc": 0.7227,
-      "test_auroc": 0.7565,
-      "test_brier": 0.2122,
-      "gap": 0.0185,
-      "tuning_seconds": 75.9
+      "cv_auprc": 0.6293,
+      "train_auprc": 0.7415,
+      "test_auprc": 0.792,
+      "test_auroc": 0.8107,
+      "test_brier": 0.1948,
+      "gap": 0.0505,
+      "tuning_seconds": 122.2
     },
     {
       "feature_set": "Events Only (4 feat, 24-dim flattened)",
       "best_params": {
         "learning_rate": 0.01,
         "max_depth": 3,
-        "n_estimators": 500,
+        "n_estimators": 300,
         "subsample": 0.8
       },
-      "cv_auprc": 0.6517,
-      "train_auprc": 0.7406,
-      "test_auprc": 0.7326,
-      "test_auroc": 0.7624,
-      "test_brier": 0.2046,
-      "gap": -0.008,
-      "tuning_seconds": 57.6
+      "cv_auprc": 0.631,
+      "train_auprc": 0.7501,
+      "test_auprc": 0.8054,
+      "test_auroc": 0.8176,
+      "test_brier": 0.1835,
+      "gap": 0.0553,
+      "tuning_seconds": 81.8
     }
   ]
 }

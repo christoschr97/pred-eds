@@ -1,0 +1,70 @@
+{
+  "experiment": "Ablation study \u2014 five-country sample, corrected target",
+  "description": "9 feature sets x 3 seeds, Attention-LSTM, 50 epochs, CPU. Parsed from results/logs/run_ablations.log.",
+  "n_seeds": 3,
+  "results": [
+    {
+      "config": "Events Only (No Network)",
+      "test_auprc_mean": 0.814,
+      "test_auprc_std": 0.0003,
+      "delta_from_full": 0.0051,
+      "n_features": 4
+    },
+    {
+      "config": "Events + Clustering Features",
+      "test_auprc_mean": 0.813,
+      "test_auprc_std": 0.0004,
+      "delta_from_full": 0.0042,
+      "n_features": 6
+    },
+    {
+      "config": "Events + Structure Features",
+      "test_auprc_mean": 0.813,
+      "test_auprc_std": 0.0009,
+      "delta_from_full": 0.0042,
+      "n_features": 9
+    },
+    {
+      "config": "Events + Centrality Features",
+      "test_auprc_mean": 0.8126,
+      "test_auprc_std": 0.0008,
+      "delta_from_full": 0.0037,
+      "n_features": 7
+    },
+    {
+      "config": "Events + Weight Features",
+      "test_auprc_mean": 0.8118,
+      "test_auprc_std": 0.001,
+      "delta_from_full": 0.003,
+      "n_features": 6
+    },
+    {
+      "config": "Full Model (All Features)",
+      "test_auprc_mean": 0.8088,
+      "test_auprc_std": 0.0006,
+      "delta_from_full": 0.0,
+      "n_features": 16
+    },
+    {
+      "config": "No Fatalities",
+      "test_auprc_mean": 0.808,
+      "test_auprc_std": 0.001,
+      "delta_from_full": -0.0009,
+      "n_features": 15
+    },
+    {
+      "config": "No Past Disappearances (Early Warning)",
+      "test_auprc_mean": 0.7225,
+      "test_auprc_std": 0.0033,
+      "delta_from_full": -0.0864,
+      "n_features": 15
+    },
+    {
+      "config": "Network Only (No Events)",
+      "test_auprc_mean": 0.693,
+      "test_auprc_std": 0.0048,
+      "delta_from_full": -0.1159,
+      "n_features": 12
+    }
+  ]
+}

@@ -14,6 +14,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from data_prep import (
+    DATA_FILE,
     load_acled_data,
     create_monthly_aggregation_with_networks,
     create_temporal_sequences,
@@ -82,7 +83,10 @@ def create_sequences_with_feature_subset(
         # Create sliding windows
         for i in range(len(region_data) - sequence_length):
             X_seq = features[i:i+sequence_length]
-            y_target = targets[i+sequence_length]
+            # See the note in data_prep.create_temporal_sequences: the 'target'
+            # column is pre-shifted, so the label for month i+sequence_length
+            # lives at row i+sequence_length-1.
+            y_target = targets[i+sequence_length-1]
             target_month = months[i+sequence_length]
 
             sequences_X.append(X_seq)
@@ -368,7 +372,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Run ablation studies')
     parser.add_argument('--data', type=str,
-                       default='./data/ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv',
+                       default=os.path.join('./data', DATA_FILE),
                        help='Path to ACLED CSV file')
     parser.add_argument('--seeds', type=int, default=3,
                        help='Number of random seeds')

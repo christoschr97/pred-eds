@@ -27,28 +27,28 @@
         "penalty": "l1",
         "solver": "saga"
       },
-      "cv_auprc": 0.6741,
-      "train_auprc": 0.6889,
-      "test_auprc": 0.7383,
-      "test_auroc": 0.7669,
-      "test_brier": 0.2065,
-      "gap": 0.0494,
-      "tuning_seconds": 18.9
+      "cv_auprc": 0.6388,
+      "train_auprc": 0.7362,
+      "test_auprc": 0.8109,
+      "test_auroc": 0.8189,
+      "test_brier": 0.1818,
+      "gap": 0.0747,
+      "tuning_seconds": 104.3
     },
     {
       "feature_set": "Events Only (4 feat, 24-dim flattened)",
       "best_params": {
-        "C": 0.01,
-        "penalty": "l2",
-        "solver": "saga"
+        "C": 0.1,
+        "penalty": "l1",
+        "solver": "liblinear"
       },
-      "cv_auprc": 0.6826,
-      "train_auprc": 0.6828,
-      "test_auprc": 0.7426,
-      "test_auroc": 0.7686,
-      "test_brier": 0.2062,
-      "gap": 0.0598,
-      "tuning_seconds": 1.0
+      "cv_auprc": 0.6416,
+      "train_auprc": 0.7324,
+      "test_auprc": 0.8115,
+      "test_auroc": 0.818,
+      "test_brier": 0.1828,
+      "gap": 0.0791,
+      "tuning_seconds": 3.7
     }
   ]
 }

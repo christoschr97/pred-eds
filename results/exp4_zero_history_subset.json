@@ -3,46 +3,70 @@
   "description": "Attention-LSTM with No Past Disappearances features (15 feat). Zero-history regions = admin1 units with 0 disappearances in training period. Evaluated on zero-history test sequences only. Seeds [42, 123, 456].",
   "zero_history_regions": [
     {
+      "country": "Afghanistan",
+      "admin1": "Badghis"
+    },
+    {
+      "country": "Afghanistan",
+      "admin1": "Laghman"
+    },
+    {
+      "country": "Afghanistan",
+      "admin1": "Nimruz"
+    },
+    {
+      "country": "Afghanistan",
+      "admin1": "Paktika"
+    },
+    {
       "country": "Myanmar",
       "admin1": "Ayeyarwady"
     },
     {
       "country": "Myanmar",
       "admin1": "Nay Pyi Taw"
+    },
+    {
+      "country": "Syria",
+      "admin1": "Lattakia"
+    },
+    {
+      "country": "Syria",
+      "admin1": "Tartous"
     }
   ],
-  "n_zero_history_regions": 2,
-  "n_total_regions": 87,
+  "n_zero_history_regions": 8,
+  "n_total_regions": 135,
   "summary": {
-    "full_test_auprc_mean": 0.6717,
-    "full_test_auprc_std": 0.0037,
-    "zh_auprc_mean": 0.2166,
-    "zh_auprc_std": 0.008,
-    "zh_n_sequences": 47,
-    "zh_positive_rate": 0.2979,
-    "zh_random_baseline": 0.2979
+    "full_test_auprc_mean": 0.7191,
+    "full_test_auprc_std": 0.0101,
+    "zh_auprc_mean": 0.1387,
+    "zh_auprc_std": 0.01,
+    "zh_n_sequences": 160,
+    "zh_positive_rate": 0.175,
+    "zh_random_baseline": 0.175
   },
   "per_seed": [
     {
       "seed": 42,
-      "full_test_auprc": 0.6769,
-      "zero_history_auprc": 0.2123,
-      "zero_history_n": 47,
-      "zero_history_pos_rate": 0.2979
+      "full_test_auprc": 0.7249,
+      "zero_history_auprc": 0.1307,
+      "zero_history_n": 160,
+      "zero_history_pos_rate": 0.175
     },
     {
       "seed": 123,
-      "full_test_auprc": 0.6683,
-      "zero_history_auprc": 0.2096,
-      "zero_history_n": 47,
-      "zero_history_pos_rate": 0.2979
+      "full_test_auprc": 0.7275,
+      "zero_history_auprc": 0.1325,
+      "zero_history_n": 160,
+      "zero_history_pos_rate": 0.175
     },
     {
       "seed": 456,
-      "full_test_auprc": 0.67,
-      "zero_history_auprc": 0.2278,
-      "zero_history_n": 47,
-      "zero_history_pos_rate": 0.2979
+      "full_test_auprc": 0.7049,
+      "zero_history_auprc": 0.1528,
+      "zero_history_n": 160,
+      "zero_history_pos_rate": 0.175
     }
   ]
 }

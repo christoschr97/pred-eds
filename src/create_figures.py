@@ -20,11 +20,15 @@ import seaborn as sns
 from pathlib import Path
 import sys
 import os
+from data_prep import DATA_FILE
 
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from lstm_new_features.data_prep import load_acled_data, create_monthly_aggregation_with_networks
+# Migration fix (8 Sep 2026): was `from lstm_new_features.data_prep import ...`,
+# a path that only resolved in the original DISACT-GNN tree. Every other module
+# in src/ imports data_prep directly; this now matches.
+from data_prep import load_acled_data, create_monthly_aggregation_with_networks
 import torch
 from sklearn.metrics import precision_recall_curve, auc
 
@@ -51,8 +55,11 @@ def figure1_time_series(data_path: str):
     """
     Figure 1: Time series of disappearances by country (2018-2024)
 
-    Shows monthly disappearance counts for Nigeria, Mexico, Myanmar
-    to illustrate data coverage and temporal patterns.
+    Shows monthly disappearance counts for Nigeria, Mexico, Myanmar,
+    Afghanistan and Syria to illustrate data coverage and temporal patterns.
+
+    Panel order keeps the three original countries in their submitted order,
+    with the two added countries appended.
     """
     print("\nGenerating Figure 1: Time series of disappearances by country...")
 
@@ -70,10 +77,10 @@ def figure1_time_series(data_path: str):
     monthly_counts['month'] = monthly_counts['month'].dt.to_timestamp()
 
     # Create figure
-    fig, axes = plt.subplots(3, 1, figsize=(10, 8), sharex=True)
+    fig, axes = plt.subplots(5, 1, figsize=(10, 13), sharex=True)
 
-    countries = ['Nigeria', 'Mexico', 'Myanmar']
-    colors = ['#1f77b4', '#ff7f0e', '#2ca02c']
+    countries = ['Nigeria', 'Mexico', 'Myanmar', 'Afghanistan', 'Syria']
+    colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#9467bd', '#d62728']
 
     for i, (country, color) in enumerate(zip(countries, colors)):
         ax = axes[i]
@@ -564,7 +571,7 @@ def figure7_attention_weights():
     plt.close()
 
 
-def create_all_figures(data_path: str = './data/ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv'):
+def create_all_figures(data_path: str = os.path.join('./data', DATA_FILE)):
     """
     Generate all 7 figures for the paper.
     """
@@ -618,7 +625,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Generate paper figures')
     parser.add_argument('--data', type=str,
-                       default='./data/ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv',
+                       default=os.path.join('./data', DATA_FILE),
                        help='Path to ACLED CSV file')
 
     args = parser.parse_args()

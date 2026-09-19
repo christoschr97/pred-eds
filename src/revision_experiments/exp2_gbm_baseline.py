@@ -9,7 +9,8 @@ Setup (matches LR baseline in Table 3 exactly):
   (same as LR: 6 timesteps × F features)
 - Same temporal train/test split (2018-Jul → 2022-Dec train,
   2023-Jan → 2024-Dec test, ~70/30 by time)
-- Same class weighting: scale_pos_weight = 1.683
+- Same class weighting rule as paper §3.6: w+ = (1 - p) / p, recomputed
+  from the training split (1.683 on the three-country sample, 2.213 on five)
 - GridSearchCV with TimeSeriesSplit(n_splits=5)
 
 Run on:
@@ -29,6 +30,7 @@ import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from data_prep import (
+    DATA_FILE,
     load_acled_data,
     create_monthly_aggregation_with_networks,
     create_temporal_sequences,
@@ -44,7 +46,7 @@ from sklearn.metrics import average_precision_score, roc_auc_score, brier_score_
 DATA_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "data",
-    "ACLED Data_2025-12-31_Nigeria_Mexico_Myanmar.csv",
+    DATA_FILE,
 )
 
 SEQUENCE_LENGTH = 6
@@ -127,7 +129,7 @@ def run_gbm_experiment(
         param_grid=PARAM_GRID,
         cv=tscv,
         scoring="average_precision",   # AUPRC — primary metric in paper
-        n_jobs=-1,
+        n_jobs=1,  # n_jobs=-1 hits a joblib/loky semaphore permission error
         verbose=1,
         refit=True,
     )
@@ -201,6 +203,15 @@ def main():
     # normalise — fit on train only (same as paper)
     X_train_norm, X_test_norm, _ = normalize_sequences(X_train_raw, X_test_raw)
 
+    # Class weight follows paper §3.6: w+ = (1 - p) / p on the TRAINING split.
+    # The literal 1.683 above was p = 0.373, the three-country training
+    # prevalence. On any other sample that constant is wrong, so recompute it
+    # here from y_train — this is what run_ablations.py and exp4/exp5/exp7 do.
+    global SCALE_POS_WEIGHT
+    SCALE_POS_WEIGHT = float((1 - y_train.mean()) / y_train.mean())
+    print(f"scale_pos_weight = {SCALE_POS_WEIGHT:.3f} "
+          f"(training prevalence {y_train.mean()*100:.1f}%)")
+
     results = []
 
     # ── Experiment A: Full Model (16 features) ───────────────────────────────
@@ -263,7 +274,9 @@ def main():
         "experiment": "Exp2 — XGBoost Baseline",
         "description": (
             "XGBoost with GridSearchCV (TimeSeriesSplit n=5). "
-            "Flattened 6-month window input. scale_pos_weight=1.683. "
+            "Flattened 6-month window input. "
+            f"scale_pos_weight={SCALE_POS_WEIGHT:.3f} recomputed from the "
+            "training split. "
             "Same temporal split as paper (train≤2022-12, test≥2023-01)."
         ),
         "param_grid": PARAM_GRID,

@@ -1,0 +1,106 @@
+{
+  "experiment": "exp8_architecture_comparison",
+  "note": "Regenerates the Standard LSTM, Attention-LSTM and untuned LR rows of Table 4 on the full 16-feature set. gap = train AUPRC - test AUPRC (models.py / paper convention; exp1 and exp2 report the opposite sign). LSTM rows are mean +/- std over 3 seeds.",
+  "config": {
+    "sequence_length": 6,
+    "split_ratio": 0.7,
+    "seeds": [
+      42,
+      123,
+      456
+    ],
+    "hidden_dim": 64,
+    "num_layers": 2,
+    "dropout": 0.2,
+    "num_epochs": 50,
+    "batch_size": 64,
+    "pos_weight": 2.2127
+  },
+  "sample": {
+    "n_regions": 135,
+    "n_train_sequences": 6660,
+    "n_test_sequences": 3036,
+    "train_positive_rate": 0.3113,
+    "test_positive_rate": 0.4595
+  },
+  "per_seed": {
+    "attention_lstm": [
+      {
+        "seed": 42,
+        "train_auprc": 0.7659,
+        "test_auprc": 0.8076,
+        "test_auroc": 0.8147,
+        "test_brier": 0.1895,
+        "gap": -0.0418
+      },
+      {
+        "seed": 123,
+        "train_auprc": 0.7563,
+        "test_auprc": 0.8099,
+        "test_auroc": 0.8208,
+        "test_brier": 0.1825,
+        "gap": -0.0536
+      },
+      {
+        "seed": 456,
+        "train_auprc": 0.7704,
+        "test_auprc": 0.8067,
+        "test_auroc": 0.8157,
+        "test_brier": 0.1861,
+        "gap": -0.0363
+      }
+    ],
+    "standard_lstm": [
+      {
+        "seed": 42,
+        "train_auprc": 0.7562,
+        "test_auprc": 0.8091,
+        "test_auroc": 0.8202,
+        "test_brier": 0.1798,
+        "gap": -0.0529
+      },
+      {
+        "seed": 123,
+        "train_auprc": 0.7586,
+        "test_auprc": 0.8093,
+        "test_auroc": 0.8206,
+        "test_brier": 0.182,
+        "gap": -0.0507
+      },
+      {
+        "seed": 456,
+        "train_auprc": 0.7604,
+        "test_auprc": 0.8082,
+        "test_auroc": 0.8193,
+        "test_brier": 0.1796,
+        "gap": -0.0478
+      }
+    ]
+  },
+  "summary": {
+    "attention_lstm": {
+      "test_auprc_mean": 0.8081,
+      "test_auprc_std": 0.0013,
+      "train_auprc_mean": 0.7642,
+      "gap_mean": -0.0439,
+      "test_brier_mean": 0.186,
+      "n_seeds": 3
+    },
+    "standard_lstm": {
+      "test_auprc_mean": 0.8089,
+      "test_auprc_std": 0.0005,
+      "train_auprc_mean": 0.7584,
+      "gap_mean": -0.0505,
+      "test_brier_mean": 0.1805,
+      "n_seeds": 3
+    },
+    "logistic_regression_untuned": {
+      "train_auprc": 0.738,
+      "test_auprc": 0.8094,
+      "train_brier": 0.1605,
+      "test_brier": 0.1829,
+      "test_auroc": 0.8157,
+      "gap": -0.0714
+    }
+  }
+}

@@ -1,6 +1,6 @@
 %% BioMed_Central_Bib_Style_v1.01
 
-\begin{thebibliography}{57}
+\begin{thebibliography}{58}
 % BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1}\fi
@@ -769,6 +769,19 @@ Uppsala University
 \endbibitem
 
 %%% 51
+\bibitem[\protect\citeauthoryear{{Armed Conflict Location \& Event Data
+  Project}}{2020}]{acledlac2020}
+\begin{botherref}
+\oauthor{\bsnm{{Armed Conflict Location \& Event Data Project}}}:
+Expanding {ACLED}'s {Latin America} \& {Caribbean} Data: 2018--2020.
+Historical back-coding extends coverage of Latin America and the Caribbean to
+  the beginning of 2018
+(2020).
+\url{https://acleddata.com/press/expanding-acleds-latin-america-caribbean-data-2018-2020}
+\end{botherref}
+\endbibitem
+
+%%% 52
 \bibitem[\protect\citeauthoryear{Oswald}{2026}]{oswald2026googletrends}
 \begin{barticle}
 \bauthor{\bsnm{Oswald}, \binits{C.}}:
@@ -783,7 +796,7 @@ Uppsala University
 \end{barticle}
 \endbibitem
 
-%%% 52
+%%% 53
 \bibitem[\protect\citeauthoryear{Hagberg et~al.}{2007}]{hagberg2007exploring}
 \begin{botherref}
 \oauthor{\bsnm{Hagberg}, \binits{A.}},
@@ -796,7 +809,7 @@ Los Alamos National Laboratory (LANL)
 \end{botherref}
 \endbibitem
 
-%%% 53
+%%% 54
 \bibitem[\protect\citeauthoryear{Freeman}{1978}]{freeman1978centrality}
 \begin{barticle}
 \bauthor{\bsnm{Freeman}, \binits{L.C.}}:
@@ -808,7 +821,7 @@ Los Alamos National Laboratory (LANL)
 \end{barticle}
 \endbibitem
 
-%%% 54
+%%% 55
 \bibitem[\protect\citeauthoryear{LeCun et~al.}{2012}]{lecun2012efficient}
 \begin{bchapter}
 \bauthor{\bsnm{LeCun}, \binits{Y.A.}},
@@ -824,7 +837,7 @@ pp. \bfpage{9}--\blpage{48}.
 \end{bchapter}
 \endbibitem
 
-%%% 55
+%%% 56
 \bibitem[\protect\citeauthoryear{Kingma and Ba}{2014}]{kingma2015adam}
 \begin{botherref}
 \oauthor{\bsnm{Kingma}, \binits{D.P.}},
@@ -835,7 +848,7 @@ arXiv preprint arXiv:1412.6980
 \end{botherref}
 \endbibitem
 
-%%% 56
+%%% 57
 \bibitem[\protect\citeauthoryear{Srivastava
   et~al.}{2014}]{srivastava2014dropout}
 \begin{barticle}
@@ -852,7 +865,7 @@ arXiv preprint arXiv:1412.6980
 \end{barticle}
 \endbibitem
 
-%%% 57
+%%% 58
 \bibitem[\protect\citeauthoryear{Correndo et~al.}{2022}]{correndo2022metrica}
 \begin{barticle}
 \bauthor{\bsnm{Correndo}, \binits{A.A.}},

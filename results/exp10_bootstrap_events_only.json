@@ -1,0 +1,42 @@
+{
+  "experiment": "Exp10 -- Paired Bootstrap/Permutation: LSTM vs. Tuned LR, events-only",
+  "description": "exp7's design applied to the EVENTS-ONLY feature set (4 features: arrests, violence, disappearances, fatalities), which is the paper's recommended specification. Attention-LSTM (3 seeds, ensemble-averaged test probabilities) vs. tuned logistic regression on the identical test set (n=3036, 2023-01 onward). Paired bootstrap (B=10000, resampling test sequences with replacement) and paired permutation test (P=10000, randomly swapping which model's prediction is used per test sequence) on the AUPRC difference. The reported p-values refer to the ensemble difference.",
+  "feature_set": [
+    "arrests",
+    "violence",
+    "disappearances",
+    "fatalities"
+  ],
+  "n_test": 3036,
+  "test_positive_rate": 0.45948616600790515,
+  "lstm_seed_auprcs": [
+    0.8138190373543273,
+    0.8144484753347624,
+    0.8137035852110254
+  ],
+  "lstm_mean_auprc": 0.8139903659667049,
+  "lstm_std_auprc": 0.0003273432899110671,
+  "lstm_ensemble_auprc": 0.8143124689464449,
+  "lr_auprc": 0.8115136228083887,
+  "lr_best_params": {
+    "C": 0.1,
+    "penalty": "l1",
+    "solver": "liblinear"
+  },
+  "diff_ensemble_minus_lr": 0.0027988461380562546,
+  "diff_seed_mean_minus_lr": 0.0024767431583162525,
+  "bootstrap": {
+    "n_boot": 10000,
+    "mean_diff": 0.002809221286878861,
+    "ci95_lo": -0.0002458947702041081,
+    "ci95_hi": 0.00586305629962224,
+    "p_diff_le_0": 0.0366,
+    "ci_excludes_zero": false
+  },
+  "permutation": {
+    "n_perm": 10000,
+    "null_mean": -3.572879972035742e-05,
+    "null_sd": 0.0036142537553173694,
+    "two_sided_p": 0.4444
+  }
+}
